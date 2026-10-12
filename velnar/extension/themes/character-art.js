@@ -5,6 +5,12 @@ globalThis.VELNAR = globalThis.VELNAR || {};
 VELNAR.CharacterArt = (() => {
   let serial=0;
   const names={"spider-man":"Spider-Man","the-last-of-us":"Ellie","red-dead":"Arthur Morgan","rick-and-morty":"Rick and Morty","iron-man":"Iron Man"};
+  const materialProfiles={
+    "spider-man":[.82,18],"the-last-of-us":[.96,9],"red-dead":[1.12,7],"rick-and-morty":[.72,15],"iron-man":[.48,30],
+    "batman":[.68,25],"star-wars":[.45,34],"harry-potter":[.9,12],"deadpool":[.73,20],"stranger-things":[.94,11],
+    "wednesday":[.78,17],"squid-game":[.66,22],"god-of-war":[1.08,8],"assassins-creed":[.88,13],"minecraft":[.28,8]
+  };
+  const contourWidths={"spider-man":1.1,"the-last-of-us":.95,"red-dead":.95,"rick-and-morty":.95,"iron-man":1.05,"batman":.9,"star-wars":.9,"harry-potter":.92,"deadpool":.9,"stranger-things":.9,"wednesday":.88,"squid-game":.95,"god-of-war":.95,"assassins-creed":.92,"minecraft":1.15};
   const art={
     "spider-man":`
       <g stroke="#131c32" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
@@ -145,7 +151,14 @@ VELNAR.CharacterArt = (() => {
       const prefix=`vn-character-${++serial}`;
       const colors={red:['#ff5a59','#c61839'],blue:['#278ed0','#113f83'],skin:['#e5c49e','#b98c6c'],hair:['#9b6544','#50332d'],denim:['#779394','#364d60'],leather:['#6e5340','#302820'],gold:['#ffe19b','#b87837'],metal:['#ed5a4e','#8c1936']};
       const defs=Object.entries(colors).map(([key,[a,b]])=>`<linearGradient id="${prefix}-${key}" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`).join('');
-      return `<svg class="vn-character vn-character--${id}" viewBox="0 0 160 192" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>${defs}</defs>${drawing.replace(/@([a-z]+)@/g,(_,key)=>`${prefix}-${key}`)}</svg>`;
+      const [grain,shine]=materialProfiles[id]||[.82,14];
+      const theme=VELNAR.getThemeById(id);
+      const light=theme?.colors?.accentSecondary||"#d9e7ff";
+      const texture=`<filter id="${prefix}-finish" x="-22%" y="-18%" width="144%" height="145%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="2.4" result="blur"/><feOffset in="blur" dy="3" result="offset"/><feFlood flood-color="#02050b" flood-opacity=".72" result="shade"/><feComposite in="shade" in2="offset" operator="in" result="shadow"/><feTurbulence type="fractalNoise" baseFrequency="${grain}" numOctaves="2" seed="${id.length*17}" result="noise"/><feColorMatrix in="noise" type="saturate" values="0" result="mono"/><feComponentTransfer in="mono" result="grain"><feFuncA type="table" tableValues="0 .13"/></feComponentTransfer><feComposite in="grain" in2="SourceAlpha" operator="in" result="surface"/><feBlend in="SourceGraphic" in2="surface" mode="soft-light" result="textured"/><feSpecularLighting in="SourceAlpha" surfaceScale="1.35" specularConstant=".25" specularExponent="${shine}" lighting-color="${light}" result="glint"><feDistantLight azimuth="225" elevation="52"/></feSpecularLighting><feComposite in="glint" in2="SourceAlpha" operator="in" result="highlight"/><feBlend in="textured" in2="highlight" mode="screen" result="lit"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="lit"/></feMerge></filter>`;
+      const rendered=drawing.replace(/^([\s\S]*?<g\s+stroke="#[0-9a-f]{6}"\s+stroke-width=")[0-9.]+/i,(_,head)=>`${head}${contourWidths[id]||1}`).replace(/@([a-z]+)@/g,(_,key)=>`${prefix}-${key}`);
+      const mask=`<filter id="${prefix}-alpha"><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/></filter><mask id="${prefix}-shape" x="-24" y="-20" width="208" height="232" maskUnits="userSpaceOnUse"><g filter="url(#${prefix}-alpha)">${rendered}</g></mask>`;
+      const sheen=`<linearGradient id="${prefix}-sheen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".3"/><stop offset=".28" stop-color="${light}" stop-opacity=".1"/><stop offset=".62" stop-color="#fff" stop-opacity=".02"/><stop offset="1" stop-color="#050914" stop-opacity=".36"/></linearGradient>`;
+      return `<svg class="vn-character vn-character--${id}" viewBox="0 0 160 192" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>${defs}${texture}${mask}${sheen}</defs><g filter="url(#${prefix}-finish)">${rendered}</g><rect x="0" y="0" width="160" height="192" fill="url(#${prefix}-sheen)" mask="url(#${prefix}-shape)" opacity=".18" style="mix-blend-mode:soft-light"/></svg>`;
     }
   };
 })();
