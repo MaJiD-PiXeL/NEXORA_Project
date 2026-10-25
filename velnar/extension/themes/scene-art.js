@@ -22,9 +22,12 @@ VELNAR.SceneArt = (() => {
       const theme = VELNAR.getThemeById(id);
       const background=backgrounds[id] || VELNAR.CollectionArt?.backgrounds[id];
       if (!theme?.scene || !background) return "";
-      const gradient = `vn-art-glow-${++serial}`;
+      const serialId = ++serial;
+      const gradient = `vn-art-glow-${serialId}`;
+      const subjectGlow = `vn-art-subject-${serialId}`;
+      const groundGlow = `vn-art-ground-${serialId}`;
       const character = VELNAR.CharacterArt.svg(id).replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '');
-      return `<svg class="vn-art vn-art--${id}" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><radialGradient id="${gradient}"><stop stop-color="${theme.colors.accentSecondary}" stop-opacity=".28"/><stop offset="1" stop-color="${theme.colors.background}" stop-opacity="0"/></radialGradient></defs><path fill="${theme.colors.background}" d="M0 0h640v360H0Z"/><path fill="url(#${gradient})" d="M0 0h640v360H0Z"/>${background}<g class="vn-subject"><g transform="translate(174 4) scale(1.823)">${character}</g></g></svg>`;
+      return `<svg class="vn-art vn-art--${id}" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><radialGradient id="${gradient}"><stop stop-color="${theme.colors.accentSecondary}" stop-opacity=".32"/><stop offset="1" stop-color="${theme.colors.background}" stop-opacity="0"/></radialGradient><radialGradient id="${subjectGlow}"><stop stop-color="${theme.colors.accent}" stop-opacity=".22"/><stop offset=".48" stop-color="${theme.colors.accentSecondary}" stop-opacity=".12"/><stop offset="1" stop-color="${theme.colors.background}" stop-opacity="0"/></radialGradient><filter id="${groundGlow}" x="-40%" y="-200%" width="180%" height="500%"><feGaussianBlur stdDeviation="12"/></filter></defs><path fill="${theme.colors.background}" d="M0 0h640v360H0Z"/><path fill="url(#${gradient})" d="M0 0h640v360H0Z"/>${background}<ellipse cx="320" cy="168" rx="170" ry="185" fill="url(#${subjectGlow})"/><ellipse cx="320" cy="326" rx="122" ry="18" fill="${theme.colors.accentSecondary}" opacity=".48" filter="url(#${groundGlow})"/><g class="vn-subject"><g transform="translate(174 4) scale(1.823)">${character}</g></g></svg>`;
     },
     motif(id) { const body=motifs[id] || VELNAR.CollectionArt?.motif(id);return body ? `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${body}</svg>` : ""; },
     motionCss: `
