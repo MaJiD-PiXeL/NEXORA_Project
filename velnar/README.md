@@ -1,72 +1,63 @@
-# VELNAR
+# NEXORA
 
-Make GitHub yours. A private, local-first Chrome and Edge extension with 45 themes, 30 editable colors, typography controls and optional animations.
+Make GitHub yours. A private, local-first Chrome and Edge extension with 45 themes, 30 editable colors, typography controls with static styling.
 
 ## Install
 
-1. Extract `dist/velnar-extension.zip`.
+1. Extract `dist/nexora-extension.zip`.
 2. Open `chrome://extensions` or `edge://extensions`.
 3. Enable **Developer mode**, choose **Load unpacked**, and select the extracted folder containing `manifest.json`.
-4. Visit GitHub and open **VELNAR** in your browser toolbar.
+4. Visit GitHub and open **NEXORA** in your browser toolbar.
 
 For development, load the `extension/` directory directly. Chrome/Edge 111 or newer is required. No bundler or server is needed for the extension.
 
 ## Features
 
-- Fifteen cinematic themes with local vector characters and distinct contribution-grid stories. The original five are joined by ten movie, television and game worlds in 2.4.0.
+- Fifteen cinematic palettes inspired by movie, television and game worlds, alongside static artwork in the collection preview.
 - 30 additional official, community, vivid and gaming palettes, searchable in the popup and settings.
 - Favorites, random themes, and automatic light/dark selection based on your system.
-- Theme Builder with 30 color controls and a live preview before applying.
+- Theme Builder with 30 editable colors, recoverable autosaved drafts and light/dark palette generation from one seed color.
+- A local library of up to 50 personal themes: save, rename, edit, copy, favorite, preview, apply and delete without changing the currently applied copy.
+- Readability checks for text, cards, links, buttons, status colors, code and diffs, with foreground repair suggestions. Translucent colors are marked unmeasured.
+- Repository, code, profile and pull request/code review previews, including side-by-side comparison.
+- Persistent history for the last 20 appearance changes, including typography, layout, components and CSS. Undo works across popup and settings sessions.
+- English and Persian interface languages, live synchronization and RTL support with LTR source code.
 - 18 component switches, global typography, border radius and shadow intensity.
-- Optional animations that respect reduced-motion preferences; disabled components do not animate.
+- Lightweight static themes: no animation engine, particles, character overlays or URL polling.
 - Custom CSS with size, delimiter and external-resource checks.
 - Theme import/export and complete settings backup/restore with validation.
 - Accessible keyboard controls, save feedback and live synchronization across settings windows.
-- SPA navigation support, including restoration of removed styles.
+- SPA navigation support, including restoration of removed styles and replaced document heads.
 
 Shortcuts: **Ctrl+Shift+G** (macOS: **Command+Shift+G**) toggles the extension; **Alt+Shift+R** selects a random theme. Customize them in your browser's extension-shortcut settings if needed.
 
 Manual theme selection, import and random selection turn automatic system theme selection off. Background, shared Primer surface/text/border colors and typography remain global when individual component rules are disabled. Component switches control additional rules and component-specific tokens. Both current and legacy Primer tokens are mapped, including nested theme providers and dynamically loaded dashboard content. Styles target GitHub selectors; changes to GitHub's markup may require maintenance.
 
+## Personalization
+
+Choose **My themes** in the library or popup to find saved palettes. **Save to library** creates a palette; **Edit / Rename** loads it into the builder and **Update saved theme** replaces that library entry. **Save a copy** creates another entry. Applying is explicit, so editing/deleting a library entry preserves the independent theme copy already active on GitHub.
+
+Valid color/name edits are saved as a builder draft without changing the active palette. Reopening settings recovers the draft automatically. **Discard draft** removes it and returns the builder to the active colors. Drafts are shared between settings windows; the last saved edit wins.
+
+**Settings → Appearance history** restores a prior appearance and removes that entry and newer entries. Undo restores the latest entry. The library, favorites, draft, language and extension enabled state are preserved. A full reset clears these along with history. Complete backups include the library, draft, history and language, with a 2 MB JSON import limit. Existing backups without these fields continue to load with defaults.
+
+**Settings → Interface language** switches English/Persian for the extension UI independently of GitHub. Persian layouts use RTL; code, diffs, CSS and color values stay LTR. The bilingual typography sample shows both reading directions.
+
+Readability uses a 4.5:1 target for the measured foreground/surface combinations, including 15% status-color mixes on code backgrounds for diff rows. A suggested fix considers all checked backgrounds sharing that foreground. If a single foreground cannot satisfy them, adjust the surface colors. Translucent colors are not assigned a misleading ratio. These checks describe the sampled pairs, rather than certifying every GitHub page.
+
 ## Cinematic collection
 
-Open **Themes → Cinematic collection** or choose a cinematic card in the popup. Selecting one also enables animations. Use **Settings → Animations** to pause effects while keeping the palette.
+All 15 cinematic palettes remain available in the popup and **Themes** library. They apply colors to GitHub backgrounds, text, buttons, code and contribution cells. The **Profile** switch controls profile styles.
 
-| Theme | Effects |
-| --- | --- |
-| Spider-Man | Drawing corner webs, red/blue tracers and charged buttons |
-| The Last of Us | Swaying fungal branches, drifting spores and firefly glows |
-| Red Dead | Sunset silhouettes, frontier dust and ember contributions |
-| Rick and Morty | Rotating portals, floating particles and green energy pulses |
-| Iron Man | Counter-rotating reactor rings, HUD traces and repulsor glows |
-| Batman | Cape glide, spinning batarang and Bat-Signal |
-| Star Wars | Darth Vader, red lightsaber and Force ripples |
-| Harry Potter | Wand spell and golden magical sparks |
-| Deadpool | Backflip and crossed katana slashes |
-| Stranger Things | Eleven, telekinesis and an Upside Down rift |
-| Wednesday | Wednesday's dance and Thing walking across the grid |
-| Squid Game | Masked guard, red/green lights and game symbols |
-| God of War | Kratos, a returning Leviathan Axe and frost impact |
-| Assassin's Creed | Ezio's leap of faith and an eagle flyover |
-| Minecraft | Steve, diamond pickaxe, cracking blocks and pixel chips |
+**Open interactive collection** opens a static demo repository with locally bundled artwork. Choose a palette and apply it to GitHub, or open `extension/preview/preview.html` without installing to preview colors. Applying a theme requires the installed extension.
 
-**Preview animations** opens an interactive demo repository inside the extension. Switch between all 15 worlds, pause motion and apply a theme to GitHub. For a preview without installing, open `extension/preview/preview.html`; applying a theme requires the installed extension.
-
-Each cinematic theme also has a full-page backdrop, distinct card surfaces, themed borders and a patterned header. A compact illustrated banner appears on the signed-in dashboard, with moving light trails, spores, dust or reactor details. It recovers when GitHub replaces the dashboard content without a full reload.
-
-Version 2.2.1 removes the separate dark layers behind changelog text and profile details. The contribution graph uses one animated sweep instead of individual animations on every day. Headers keep their pattern without continuous repainting, and primary buttons glow on hover or keyboard focus. Unchanged styles and paused banner artwork are reused, and the palette can appear before GitHub finishes parsing the page.
-
-In 2.3.0, each cinematic theme replaces that sweep with a tiny story inside the contribution grid: web shooting and swinging, a survivor with a flashlight and growing fungi, Dead Eye aiming and a gunshot, a portal journey, or Iron Man's flight and repulsor. Targets line up with actual cells. Each graph has only 4–6 animated overlay objects; its cells remain unchanged. Scenes pause offscreen and follow **Animations** and **Contribution Graph** independently of the atmosphere switch.
-
-Version 2.3.1 adds more detailed character drawings shared by the graph, banners and theme cards. Actors scale up to 76px to keep faces and clothing readable inside the grid. Spider-Man, Ellie, Arthur Morgan, Rick and Morty, and Iron Man are drawn locally in `extension/themes/character-art.js`; the extension downloads no character artwork. Run `node scripts/character-review.cjs` to rebuild the character gallery in `artifacts/character-redesign.html`.
-
-Version 2.4.0 adds ten more worlds with illustrated characters in `extension/themes/collection-art.js` and contribution stories in `extension/content/collection-stories.js`. Version 2.4.1 adds distinct, synchronized character choreography: body acting, tool arcs, impact beats and cape, saber and pickaxe motion. Version 2.4.2 shortens the long loops and aligns prop effects with each character's action, so story beats are easier to see. Version 2.4.3 keeps characters on stage through nearly the whole loop and gives the signature actions longer, clearer visibility. Version 2.4.4 tightens the timing between character poses and their effects, adds a restrained contact glow, and makes the key action beats last long enough to read clearly. Version 2.4.5 enlarges graph performers, shortens cinematic cycles, and gives action effects enough contrast and screen time to register. Animations use only transforms and opacity on a small number of scene elements; contribution cells stay untouched. Pause, reduced motion and offscreen suspension remain available.
-
-Motion respects system reduced-motion preferences and stops while the GitHub tab is hidden. Pausing animations keeps the static theme and banner visible. The **Profile & cinematic atmosphere** switch hides the dashboard banner, backdrop and decorative margin layer; navbar, sidebar, card, button and contribution styles follow their respective component switches. Decorations never capture clicks or keyboard focus and shrink on small screens. All artwork is bundled locally, without network requests.
+Motion controls and engines have been removed. Older settings and backups remain compatible; obsolete motion preferences are ignored. Theme cards use compact palette samples. Unchanged library cards and preview markup are reused, and GitHub styles are restored through navigation events and observers limited to the document head and root, without polling or body scans.
 
 ## Brand
 
-The supplied VELNAR V/N monogram is the same mark used in the latest VELNAR website design. The original vector is in `assets/velnar-mark.svg`; PNG exports and browser icons are generated from it without redrawing the mark.
+The canonical silver N mark is taken directly from the NEXORA website design. The original vector is in `assets/nexora-mark.svg`; PNG exports and browser icons are generated from it without redrawing the mark.
+
+NEXORA uses the website’s obsidian (`#08090B`), titanium (`#BFC3C8`) and electric blue (`#426BFF`) palette, with bundled Manrope and Vazirmatn fonts under their included OFL licenses. Its brand statement is **Beyond what exists. / فراتر از آنچه هست.**
 
 ## Development and checks
 
@@ -89,21 +80,22 @@ Browser smoke tests use Playwright and a separate, disposable browser profile:
 
 ```sh
 npm install --no-save playwright
-# Set VELNAR_BROWSER to an Edge/Chromium executable if required.
+# Set NEXORA_BROWSER to an Edge/Chromium executable if required.
 node tests/browser-smoke.cjs
-node tests/cinematic-smoke.cjs
-node tests/dashboard-coverage.cjs
-node tests/surface-performance.cjs
-node tests/graph-scenes.cjs
-# Optional: compare animation counts with a previous unpacked version.
-# node tests/surface-performance.cjs /path/to/previous/extension
+npm run test:branding
+node tests/studio-smoke.cjs
+node tests/static-themes.cjs
+npm run test:personalization
+npm run test:repositories
 ```
 
 ## Existing installations
 
-After replacing files in an existing unpacked installation, click **Reload** on VELNAR in `chrome://extensions` or `edge://extensions`, then refresh open GitHub tabs so they receive the updated content scripts.
+The branding check verifies migration of an existing personal library, favorites, history, typography and language from VELNAR, preserves the original storage record, and captures the English/Persian interface and responsive landing page in `artifacts/nexora/`.
 
-The new settings key is `velnar_settings_v1`. Existing settings under earlier brand keys are migrated when upgrading the same browser extension. Installing the renamed folder as a separate unpacked extension may receive a different extension ID; export your old settings and restore that backup in VELNAR in that case. Old theme JSON exports remain supported.
+After replacing files in an existing unpacked installation, click **Reload** on NEXORA in `chrome://extensions` or `edge://extensions`, then refresh open GitHub tabs so they receive the updated content scripts.
+
+The new settings key is `nexora_settings_v1`. Existing `velnar_settings_v1`, `mavaj_settings_v1` and `gitskin_settings_v1` data are read in that order and migrated on the next successful write, without deleting the original keys. Keep the existing `velnar/extension` folder path when reloading so the unpacked extension keeps its identity. Installing a different folder as a separate unpacked extension may receive a different extension ID; export your old settings and restore that backup in NEXORA in that case. Old theme JSON exports remain supported.
 
 ## Privacy
 

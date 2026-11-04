@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "migration": "velnar_settings_v1 -> nexora_settings_v1",
+  "languages": [
+    "en",
+    "fa"
+  ],
+  "errors": []
+}

@@ -1,17 +1,20 @@
 {
-  "name": "velnar",
+  "name": "nexora",
   "version": "2.4.5",
   "private": true,
-  "description": "VELNAR \u2014 Make GitHub yours.",
+  "description": "NEXORA \u2014 Make GitHub yours.",
   "scripts": {
     "test": "node --test tests/*.test.cjs",
+    "test:branding": "node tests/branding-smoke.cjs",
+    "test:personalization": "node tests/personalization-smoke.cjs",
+    "test:repositories": "node tests/repository-layout.cjs",
     "icons": "node scripts/generate_icons.cjs",
     "build": "python scripts/build_zip.py"
   },
   "devDependencies": {
-    "sharp": "^0.34.5"
+    "sharp": "^0.35.5"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20.9.0"
   }
 }

@@ -1,12 +1,14 @@
 <div align="center">
 
-# ⚡ VELNAR
+# ⚡ NEXORA
 
-### Make GitHub truly yours.
+### Beyond what exists.
+
+Make GitHub truly yours.
 
 **A powerful Chrome extension for completely customizing the look and feel of GitHub.**
 
-Themes • Animations • Colors • Typography • Custom CSS • Theme Builder
+Themes • Colors • Typography • Custom CSS • Theme Builder
 
 <br>
 
@@ -18,11 +20,13 @@ Themes • Animations • Colors • Typography • Custom CSS • Theme Builder
 
 # 🌐 English
 
-## ✨ What is VELNAR?
+The project is now branded **NEXORA**, following the NEXORA website identity. The existing repository URL and `velnar/extension` path remain valid for upgrades; the release package is `velnar/dist/nexora-extension.zip`.
 
-**VELNAR** is a Chrome extension that gives you complete control over the appearance of GitHub.
+## ✨ What is NEXORA?
 
-Instead of using the same default interface every day, VELNAR lets you transform GitHub with beautiful themes, animations, custom colors, typography settings, component controls, and even your own CSS.
+**NEXORA** is a Chrome extension that gives you complete control over the appearance of GitHub.
+
+Instead of using the same default interface every day, NEXORA lets you transform GitHub with beautiful themes, custom colors, typography settings, component controls, and even your own CSS.
 
 All of this happens **locally in your browser** without changing GitHub's actual functionality.
 
@@ -32,7 +36,7 @@ All of this happens **locally in your browser** without changing GitHub's actual
 
 ## 🔥 Features
 
-### 🎨 30+ Built-in Themes
+### 🎨 45 Built-in Themes
 
 Choose from a large collection of carefully designed themes including:
 
@@ -58,26 +62,15 @@ Choose from a large collection of carefully designed themes including:
 
 ### 🎮 Gaming & RGB Themes
 
-VELNAR includes special gaming-inspired themes with dynamic RGB effects and live color cycling.
+NEXORA includes special gaming-inspired themes with bold, static RGB-inspired palettes.
 
 Bring a gaming setup atmosphere directly into GitHub.
 
 ---
 
-### ✨ Animated Themes
+### ✨ Lightweight Static Themes
 
-Enable optional animations to make GitHub feel more alive.
-
-Animations include:
-
-* Gradient navbar effects
-* Glowing buttons
-* Smooth hover transitions
-* Contribution graph animations
-* Shimmer effects
-* Dynamic accent colors
-
-Animations also respect your system's reduced-motion preferences.
+All themes use static colors. Motion effects, character overlays and background animation engines have been removed for a lighter GitHub experience.
 
 ---
 
@@ -87,7 +80,7 @@ Don't like the presets?
 
 Build your own.
 
-VELNAR gives you control over **28 individual colors**, including:
+NEXORA gives you control over **30 individual colors**, including:
 
 * Background surfaces
 * Text
@@ -107,11 +100,23 @@ Create a GitHub theme that is completely yours.
 
 ---
 
+### Personal Theme Library and Drafts
+
+Save up to 50 personal palettes in the theme library. Edit, rename, copy, favorite, preview, apply or delete them from **My themes**. Editing or deleting a saved palette preserves the copy already applied to GitHub.
+
+The Theme Builder saves a recoverable draft automatically. Generate a light or dark palette from one seed color, then fine-tune any of its 30 colors. Readability checks cover text, links, buttons, status colors and code review additions/deletions, with suggested foreground fixes where possible. Transparent colors are reported as unmeasured.
+
+Preview **Code Review** to compare pull request diffs and comments before applying. The latest 20 appearance changes are stored locally and can be restored after closing the panel. Restoring an entry removes that entry and newer entries while preserving your library, draft, favorites and language. Full settings reset clears this history.
+
+Choose **English** or **فارسی** in **Settings → Interface language**. Persian uses RTL for the extension interface while source code stays LTR. Complete backups include personal palettes, draft, history and language; JSON imports are limited to 2 MB.
+
+---
+
 ### 🧩 Component Control
 
 You decide exactly which parts of GitHub should be customized.
 
-VELNAR can independently control areas such as:
+NEXORA can independently control areas such as:
 
 * Navbar
 * Sidebar
@@ -153,11 +158,11 @@ Control:
 
 ### 🌙 Auto Dark Mode
 
-VELNAR can automatically follow your operating system's light/dark mode.
+NEXORA can automatically follow your operating system's light/dark mode.
 
-Choose one VELNAR theme for Light Mode and another for Dark Mode.
+Choose one NEXORA theme for Light Mode and another for Dark Mode.
 
-VELNAR switches between them automatically.
+NEXORA switches between them automatically.
 
 ---
 
@@ -173,7 +178,7 @@ Add it to your favorites and access it faster.
 
 Can't decide?
 
-Let VELNAR choose.
+Let NEXORA choose.
 
 Use the Random Theme option to instantly switch to another theme.
 
@@ -183,11 +188,11 @@ Use the Random Theme option to instantly switch to another theme.
 
 Want even more control?
 
-VELNAR includes a Custom CSS panel for advanced users.
+NEXORA includes a Custom CSS panel for advanced users.
 
 Write your own CSS and customize GitHub beyond the built-in settings.
 
-VELNAR validates your CSS before applying it and provides an easy reset option.
+NEXORA validates your CSS before applying it and provides an easy reset option.
 
 ---
 
@@ -195,7 +200,7 @@ VELNAR validates your CSS before applying it and provides an easy reset option.
 
 Save and share your custom themes.
 
-VELNAR supports:
+NEXORA supports:
 
 * Theme Export
 * Theme Import
@@ -208,23 +213,23 @@ Your setup can easily be moved to another machine.
 
 ### ⌨️ Keyboard Shortcuts
 
-Quickly control VELNAR without opening the extension.
+Quickly control NEXORA without opening the extension.
 
 ```text
-Ctrl + Shift + G → Enable / Disable VELNAR
+Ctrl + Shift + G → Enable / Disable NEXORA
 
-Ctrl + Shift + R → Random Theme
+Alt + Shift + R → Random Theme
 ```
 
 ---
 
 ## 🔐 Privacy First
 
-VELNAR is designed to be **local-first**.
+NEXORA is designed to be **local-first**.
 
 It does not need an account and does not send your customization data to an external server.
 
-### VELNAR has:
+### NEXORA has:
 
 * ❌ No analytics
 * ❌ No tracking
@@ -239,9 +244,9 @@ Your settings are stored locally in your browser.
 
 # 📥 Installation
 
-VELNAR is currently available directly from GitHub.
+NEXORA is currently available directly from GitHub.
 
-### 1. Download VELNAR
+### 1. Download NEXORA
 
 Clone the repository:
 
@@ -293,7 +298,7 @@ from the top-right corner.
 
 ---
 
-### 5. Load VELNAR
+### 5. Load NEXORA
 
 Click:
 
@@ -317,22 +322,22 @@ Open:
 github.com
 ```
 
-VELNAR is now ready.
+NEXORA is now ready.
 
 ---
 
 # 🖥️ How to Use
 
-Using VELNAR is simple.
+Using NEXORA is simple.
 
 1. Install the extension.
 2. Open GitHub.
-3. Click the **VELNAR icon** in your Chrome toolbar.
+3. Click the **NEXORA icon** in your Chrome toolbar.
 4. Select your favorite theme.
 5. Customize it however you want.
 6. Enjoy your new GitHub experience.
 
-For advanced customization, open the VELNAR settings dashboard.
+For advanced customization, open the NEXORA settings dashboard.
 
 ---
 
@@ -341,7 +346,7 @@ For advanced customization, open the VELNAR settings dashboard.
 Open:
 
 ```text
-VELNAR → Settings → Theme Builder
+NEXORA → Settings → Theme Builder
 ```
 
 Customize your colors and visual settings.
@@ -395,7 +400,7 @@ VELNAR_Project/
 
 # 💻 Technology
 
-VELNAR is built using:
+NEXORA is built using:
 
 * HTML
 * CSS
@@ -410,12 +415,11 @@ The extension itself does not require a framework or build system.
 
 # 🚧 Roadmap
 
-VELNAR will continue to improve.
+NEXORA will continue to improve.
 
 Planned ideas include:
 
 * [ ] More themes
-* [ ] More animations
 * [ ] More customization options
 * [ ] Improved Theme Builder
 * [ ] Better preset management
@@ -431,7 +435,7 @@ If something isn't working correctly, open an Issue.
 Please include:
 
 * Chrome version
-* VELNAR version
+* NEXORA version
 * Description of the problem
 * Steps to reproduce it
 * Screenshot or video if possible
@@ -442,7 +446,7 @@ Please include:
 
 Contributions are welcome.
 
-If you want to improve VELNAR:
+If you want to improve NEXORA:
 
 1. Fork the repository
 2. Create a new branch
@@ -453,9 +457,9 @@ If you want to improve VELNAR:
 
 ---
 
-# ⭐ Support VELNAR
+# ⭐ Support NEXORA
 
-If you like VELNAR and want to support the project:
+If you like NEXORA and want to support the project:
 
 ### Give the repository a ⭐
 
@@ -465,7 +469,7 @@ It helps more developers discover the project and supports future development.
 
 # 📄 License
 
-VELNAR is released under the **MIT License**.
+NEXORA is released under the **MIT License**.
 
 See the `LICENSE` file for more information.
 
@@ -473,11 +477,11 @@ See the `LICENSE` file for more information.
 
 # 🇮🇷 فارسی
 
-## VELNAR چیست؟
+## NEXORA چیست؟
 
-**VELNAR** یک اکستنشن برای Google Chrome است که به شما اجازه می‌دهد ظاهر GitHub را تقریباً به‌طور کامل شخصی‌سازی کنید.
+**NEXORA** یک اکستنشن برای Google Chrome است که به شما اجازه می‌دهد ظاهر GitHub را تقریباً به‌طور کامل شخصی‌سازی کنید.
 
-اگر از ظاهر همیشگی GitHub خسته شده‌اید، VELNAR به شما امکان می‌دهد با استفاده از تم‌ها، رنگ‌ها، انیمیشن‌ها، فونت‌ها و تنظیمات مختلف محیط GitHub را مطابق سلیقه خودتان تغییر دهید.
+اگر از ظاهر همیشگی GitHub خسته شده‌اید، NEXORA به شما امکان می‌دهد با استفاده از تم‌ها، رنگ‌ها، فونت‌ها و تنظیمات مختلف محیط GitHub را مطابق سلیقه خودتان تغییر دهید.
 
 این تغییرات فقط مربوط به ظاهر GitHub هستند و عملکرد اصلی GitHub را تغییر نمی‌دهند.
 
@@ -485,11 +489,11 @@ See the `LICENSE` file for more information.
 
 ---
 
-## 🔥 امکانات VELNAR
+## 🔥 امکانات NEXORA
 
-### 🎨 بیش از ۳۰ تم آماده
+### 🎨 ۴۵ تم آماده
 
-VELNAR دارای مجموعه بزرگی از تم‌های مختلف است؛ از تم‌های ساده و حرفه‌ای گرفته تا تم‌های Gaming و RGB.
+NEXORA دارای مجموعه بزرگی از تم‌های مختلف است؛ از تم‌های ساده و حرفه‌ای گرفته تا تم‌های Gaming و RGB.
 
 از جمله:
 
@@ -512,26 +516,15 @@ VELNAR دارای مجموعه بزرگی از تم‌های مختلف است؛
 
 ### 🎮 تم‌های Gaming و RGB
 
-اگر به ظاهر Gaming علاقه دارید، VELNAR دارای تم‌هایی با افکت RGB و تغییر رنگ پویا است.
+اگر به ظاهر Gaming علاقه دارید، NEXORA دارای تم‌هایی با پالت‌های ثابت با الهام از RGB است.
 
 با این قابلیت می‌توانید ظاهر GitHub را با ستاپ گیمینگ خود هماهنگ کنید.
 
 ---
 
-### ✨ انیمیشن
+### ✨ تم‌های ثابت و سبک
 
-VELNAR می‌تواند بخش‌های مختلف GitHub را زنده‌تر کند.
-
-از جمله:
-
-* افکت‌های Gradient
-* درخشش دکمه‌ها
-* انیمیشن Hover
-* انیمیشن Contribution Graph
-* افکت Shimmer
-* تغییر پویای Accent Color
-
-تمام این قابلیت‌ها اختیاری هستند.
+موشن‌ها، کاراکترهای متحرک و موتورهای انیمیشن حذف شده‌اند تا تم‌ها با پردازش کمتر روی گیت‌هاب اجرا شوند. همه تم‌ها همچنان در دسترس هستند.
 
 ---
 
@@ -539,7 +532,7 @@ VELNAR می‌تواند بخش‌های مختلف GitHub را زنده‌تر 
 
 اگر تم‌های آماده کافی نیستند، تم خودتان را بسازید.
 
-VELNAR امکان شخصی‌سازی **۲۸ رنگ مختلف** را در اختیارتان قرار می‌دهد.
+NEXORA امکان شخصی‌سازی **۳۰ رنگ مختلف** را در اختیارتان قرار می‌دهد.
 
 می‌توانید بخش‌هایی مثل:
 
@@ -564,9 +557,21 @@ VELNAR امکان شخصی‌سازی **۲۸ رنگ مختلف** را در اخ�
 
 ---
 
+### کتابخانه تم‌های شخصی و پیش‌نویس
+
+تا **۵۰ تم شخصی** را در بخش «تم‌های من» ذخیره کنید، نامشان را تغییر دهید، ویرایش کنید یا از آن‌ها کپی بسازید. ویرایش یا حذف تم ذخیره‌شده، نسخه‌ای را که روی گیت‌هاب فعال است تغییر نمی‌دهد.
+
+ساخت تم دارای ذخیره خودکار پیش‌نویس و بازیابی پس از بستن پنل است. با انتخاب یک رنگ اصلی، پالت روشن یا تیره بسازید و سپس هرکدام از ۳۰ رنگ را تغییر دهید. بررسی خوانایی شامل متن اصلی و فرعی، لینک‌ها، دکمه‌ها، وضعیت‌ها و خطوط اضافه‌شده و حذف‌شده است. برای رنگ‌های کم‌خوانا، در صورت امکان رنگ جایگزین پیشنهاد می‌شود؛ رنگ‌های شفاف بدون سطح زیرین مشخص اندازه‌گیری نمی‌شوند.
+
+نمای «بازبینی کد» امکان مقایسه Diff و کامنت‌ها را قبل از اعمال تم فراهم می‌کند. **۲۰ تغییر آخر ظاهر** روی مرورگر باقی می‌مانند و از تنظیمات قابل بازیابی‌اند. بازیابی یک مورد، همان مورد و موارد جدیدتر تاریخچه را حذف می‌کند؛ کتابخانه، پیش‌نویس، علاقه‌مندی‌ها و زبان حفظ می‌شوند. بازنشانی کامل تنظیمات، تاریخچه را هم پاک می‌کند.
+
+از **تنظیمات ← زبان رابط** فارسی یا انگلیسی را انتخاب کنید. رابط فارسی راست‌به‌چپ است و کدها چپ‌به‌راست می‌مانند. پشتیبان کامل شامل تم‌های شخصی، پیش‌نویس، تاریخچه و زبان است. سقف حجم فایل ورودی JSON دو مگابایت است.
+
+---
+
 ### 🧩 کنترل جداگانه بخش‌های GitHub
 
-VELNAR به شما اجازه می‌دهد مشخص کنید کدام قسمت‌های GitHub تغییر کنند.
+NEXORA به شما اجازه می‌دهد مشخص کنید کدام قسمت‌های GitHub تغییر کنند.
 
 مثل:
 
@@ -607,7 +612,7 @@ VELNAR به شما اجازه می‌دهد مشخص کنید کدام قسمت�
 
 ### 🌙 حالت Dark خودکار
 
-VELNAR می‌تواند Light/Dark Mode سیستم شما را تشخیص دهد و بر اساس آن تم را به‌صورت خودکار تغییر دهد.
+NEXORA می‌تواند Light/Dark Mode سیستم شما را تشخیص دهد و بر اساس آن تم را به‌صورت خودکار تغییر دهد.
 
 ---
 
@@ -619,7 +624,7 @@ VELNAR می‌تواند Light/Dark Mode سیستم شما را تشخیص ده�
 
 ### 🎲 انتخاب تصادفی تم
 
-اگر نمی‌دانید کدام تم را انتخاب کنید، VELNAR می‌تواند یک تم را به‌صورت تصادفی برایتان فعال کند.
+اگر نمی‌دانید کدام تم را انتخاب کنید، NEXORA می‌تواند یک تم را به‌صورت تصادفی برایتان فعال کند.
 
 ---
 
@@ -633,7 +638,7 @@ VELNAR می‌تواند Light/Dark Mode سیستم شما را تشخیص ده�
 
 تم‌ها و تنظیمات خودتان را ذخیره کنید.
 
-VELNAR از موارد زیر پشتیبانی می‌کند:
+NEXORA از موارد زیر پشتیبانی می‌کند:
 
 * Export Theme
 * Import Theme
@@ -648,10 +653,10 @@ VELNAR از موارد زیر پشتیبانی می‌کند:
 Ctrl + Shift + G
 ```
 
-فعال یا غیرفعال کردن VELNAR
+فعال یا غیرفعال کردن NEXORA
 
 ```text
-Ctrl + Shift + R
+Alt + Shift + R
 ```
 
 انتخاب یک تم تصادفی
@@ -660,11 +665,11 @@ Ctrl + Shift + R
 
 # 🔐 حریم خصوصی
 
-VELNAR با رویکرد **Local-First** طراحی شده است.
+NEXORA با رویکرد **Local-First** طراحی شده است.
 
 یعنی تنظیمات شما روی سیستم خودتان ذخیره می‌شوند.
 
-VELNAR دارای:
+NEXORA دارای:
 
 * ❌ تبلیغات نیست
 * ❌ سیستم Tracking ندارد
@@ -673,13 +678,13 @@ VELNAR دارای:
 * ❌ GitHub Token شما را ذخیره نمی‌کند
 * ❌ Session گیت‌هاب شما را ذخیره نمی‌کند
 
-تنظیمات VELNAR به‌صورت Local داخل مرورگر ذخیره می‌شوند.
+تنظیمات NEXORA به‌صورت Local داخل مرورگر ذخیره می‌شوند.
 
 ---
 
 # 📥 آموزش نصب
 
-در حال حاضر VELNAR از طریق GitHub قابل نصب است.
+در حال حاضر NEXORA از طریق GitHub قابل نصب است.
 
 ### مرحله ۱
 
@@ -743,15 +748,15 @@ VELNAR_Project/velnar/extension
 
 تمام! 🚀
 
-وارد GitHub شوید و از VELNAR استفاده کنید.
+وارد GitHub شوید و از NEXORA استفاده کنید.
 
 ---
 
 # 🖥️ نحوه استفاده
 
-1. VELNAR را نصب کنید.
+1. NEXORA را نصب کنید.
 2. وارد GitHub شوید.
-3. روی آیکون VELNAR در Chrome کلیک کنید.
+3. روی آیکون NEXORA در Chrome کلیک کنید.
 4. تم موردنظر را انتخاب کنید.
 5. در صورت نیاز وارد Settings شوید.
 6. ظاهر GitHub را مطابق سلیقه خودتان تغییر دهید.
@@ -760,10 +765,9 @@ VELNAR_Project/velnar/extension
 
 # 🚧 برنامه توسعه
 
-در نسخه‌های بعدی قابلیت‌های بیشتری برای VELNAR در نظر گرفته می‌شود.
+در نسخه‌های بعدی قابلیت‌های بیشتری برای NEXORA در نظر گرفته می‌شود.
 
 * [ ] تم‌های بیشتر
-* [ ] انیمیشن‌های بیشتر
 * [ ] امکانات شخصی‌سازی بیشتر
 * [ ] توسعه Theme Builder
 * [ ] انتشار در Chrome Web Store
@@ -773,12 +777,12 @@ VELNAR_Project/velnar/extension
 
 # 🐛 گزارش باگ
 
-اگر مشکلی در VELNAR پیدا کردید، از قسمت **Issues** همین Repository گزارش کنید.
+اگر مشکلی در NEXORA پیدا کردید، از قسمت **Issues** همین Repository گزارش کنید.
 
 در صورت امکان این موارد را هم ذکر کنید:
 
 * نسخه Chrome
-* نسخه VELNAR
+* نسخه NEXORA
 * توضیح مشکل
 * مراحل ایجاد مشکل
 * Screenshot یا Video
@@ -787,13 +791,13 @@ VELNAR_Project/velnar/extension
 
 # 🤝 مشارکت
 
-اگر برنامه‌نویس هستید و می‌خواهید در توسعه VELNAR مشارکت کنید، Pull Requestهای شما خوش‌آمد هستند.
+اگر برنامه‌نویس هستید و می‌خواهید در توسعه NEXORA مشارکت کنید، Pull Requestهای شما خوش‌آمد هستند.
 
 ---
 
 # ⭐ حمایت از پروژه
 
-اگر VELNAR برایتان جالب یا کاربردی بود، با دادن یک **Star ⭐** از پروژه حمایت کنید.
+اگر NEXORA برایتان جالب یا کاربردی بود، با دادن یک **Star ⭐** از پروژه حمایت کنید.
 
 این کار باعث بیشتر دیده‌شدن پروژه و ادامه توسعه آن می‌شود.
 
@@ -801,7 +805,7 @@ VELNAR_Project/velnar/extension
 
 <div align="center">
 
-## ⚡ VELNAR
+## ⚡ NEXORA
 
 **Make GitHub yours.**
 

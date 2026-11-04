@@ -1,4 +1,4 @@
-# Contributing to VELNAR
+# Contributing to NEXORA
 
 Load `extension/` in a Chromium browser's developer mode, make changes, run `npm test`, and verify the popup, settings and representative GitHub pages.
 
@@ -8,7 +8,7 @@ Load `extension/` in a Chromium browser's developer mode, make changes, run `npm
 - Preserve accessibility, reduced motion, and existing stored preferences.
 - Never introduce tracking, remote assets, `eval`, or remote code.
 - Add themes through `buildTheme` in `extension/themes/presets.js`; all 30 colors are derived from the base palette.
-- Generate icons from `assets/velnar-mark.svg` using `npm run icons`.
+- Generate icons from `assets/nexora-mark.svg` using `npm run icons`.
 - Update the changelog and regenerate the distribution archive after a release.
 
 See `README.md` for installation, packaging and browser-test instructions.
