@@ -1,15 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "VELNAR - Customize Your GitHub",
+  "name": "NEXORA - Customize Your GitHub",
+  "short_name": "NEXORA",
   "version": "2.4.5",
-  "description": "Make GitHub yours with 45 themes, including 15 cinematic worlds with unique characters and animations. Private by design.",
-  "author": "VELNAR",
+  "description": "Make GitHub yours with 45 static themes, custom palettes and typography. Lightweight and private by design.",
+  "author": "NEXORA",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
   "action": {
+    "default_title": "NEXORA — GitHub Studio",
     "default_popup": "popup/popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
@@ -33,7 +35,7 @@
         "default": "Ctrl+Shift+G",
         "mac": "Command+Shift+G"
       },
-      "description": "Toggle VELNAR"
+      "description": "Toggle NEXORA"
     },
     "random-theme": {
       "suggested_key": {
@@ -41,6 +43,10 @@
         "mac": "Alt+Shift+R"
       },
       "description": "Choose a random theme"
+    },
+    "toggle-review-focus": {
+      "suggested_key": { "default": "Alt+Shift+F" },
+      "description": "Toggle focus on pull request changes"
     }
   },
   "content_scripts": [
@@ -52,16 +58,9 @@
       "js": [
         "utils/constants.js",
         "themes/presets.js",
-        "themes/character-art.js",
-        "themes/collection-art.js",
-        "themes/scene-art.js",
         "utils/validator.js",
         "utils/storage.js",
         "content/injector.js",
-        "content/world.js",
-        "content/collection-stories.js",
-        "content/graph-scenes.js",
-        "content/cinema.js",
         "content/observer.js",
         "content/content.js"
       ]

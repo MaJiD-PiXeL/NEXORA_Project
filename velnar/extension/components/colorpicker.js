@@ -1,8 +1,8 @@
 // ye wrapper sabok dore native color input, hamzaman ye hex text field ham nemayesh mide
 // nakhastim ye colorpicker sangin az sefr besazim, chizi ke browser mide kafie faghat style zadim
-globalThis.VELNAR = globalThis.VELNAR || {};
+globalThis.NEXORA = globalThis.NEXORA || {};
 
-VELNAR.ColorPicker = {
+NEXORA.ColorPicker = {
   // container: HTMLElement, options: {label, value, onChange}
   create(container, { label, value, onChange, hexOnly = false }) {
     const wrap = document.createElement("div");
@@ -42,13 +42,14 @@ VELNAR.ColorPicker = {
 
     hexInput.addEventListener("change", () => {
       const hex = hexInput.value.trim();
-      if (VELNAR.Validator.isColor(hex) && (!hexOnly || hex.startsWith("#"))) {
+      if (NEXORA.Validator.isColor(hex) && (!hexOnly || hex.startsWith("#"))) {
         hexInput.setCustomValidity("");
         hexInput.removeAttribute("aria-invalid");
         swatch.value = asHex(hex);
         onChange(hex);
       } else {
-        hexInput.setCustomValidity(hexOnly ? "Use a hex color." : "Use a hex or rgb/rgba color.");
+        const message = hexOnly ? "Use a hex color." : "Use a hex or rgb/rgba color.";
+        hexInput.setCustomValidity(NEXORA.I18n ? NEXORA.I18n.t(message) : message);
         hexInput.setAttribute("aria-invalid", "true");
         hexInput.reportValidity();
       }

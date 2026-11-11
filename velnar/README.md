@@ -35,6 +35,10 @@ Manual theme selection, import and random selection turn automatic system theme 
 
 ## Personalization
 
+In the popup on GitHub, select **Preview on this page** and choose a palette to try it on the current tab. Press **Esc** or close the popup to cancel. **Apply globally** saves your default palette. **Only for this repo** saves an independent copy that takes priority over the global palette on that repository. Use **Use global theme** to remove the override. Complete backups include repository names and their palettes.
+
+On a pull request's **Files changed** page, select **Review focus** in the popup or press **Alt+Shift+F**. The mode makes added and removed lines easier to distinguish and collapses the file tree when supported by the page layout. It lasts for that review in the current tab. **Download PNG card** in Theme Builder exports your draft. The same button under Import / Export exports your global palette. Both cards use sample code.
+
 Choose **My themes** in the library or popup to find saved palettes. **Save to library** creates a palette; **Edit / Rename** loads it into the builder and **Update saved theme** replaces that library entry. **Save a copy** creates another entry. Applying is explicit, so editing/deleting a library entry preserves the independent theme copy already active on GitHub.
 
 Valid color/name edits are saved as a builder draft without changing the active palette. Reopening settings recovers the draft automatically. **Discard draft** removes it and returns the builder to the active colors. Drafts are shared between settings windows; the last saved edit wins.

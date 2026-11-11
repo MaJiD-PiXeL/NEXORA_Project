@@ -1,13 +1,13 @@
 importScripts("../utils/constants.js", "../themes/presets.js", "../utils/validator.js", "../utils/storage.js");
-VELNAR.Storage.isWriter = true;
+NEXORA.Storage.isWriter = true;
 
 chrome.runtime.onMessage.addListener((message, sender, respond) => {
-  if (message?.type !== "velnar:settings") return;
+  if (message?.type !== "nexora:settings") return;
   if (sender.id !== chrome.runtime.id || !sender.url?.startsWith(chrome.runtime.getURL(""))) {
-    respond({ ok: false, error: "Settings can only be changed from VELNAR." });
+    respond({ ok: false, error: "Settings can only be changed from NEXORA." });
     return;
   }
-  VELNAR.Storage._commit(message.action, message.payload).then(
+  NEXORA.Storage._commit(message.action, message.payload).then(
     settings => respond({ ok: true, settings }),
     error => respond({ ok: false, error: error.message })
   );
@@ -16,10 +16,15 @@ chrome.runtime.onMessage.addListener((message, sender, respond) => {
 
 chrome.runtime.onInstalled.addListener(() => {
   // A no-op patch also migrates the old key without resetting preferences.
-  VELNAR.Storage.set({}).catch(console.error);
+  NEXORA.Storage.set({}).catch(console.error);
 });
 
 chrome.commands.onCommand.addListener(command => {
-  if (command === "toggle-extension") VELNAR.Storage.toggle("enabled").catch(console.error);
-  if (command === "random-theme") VELNAR.Storage.randomTheme().catch(console.error);
+  if (command === "toggle-extension") NEXORA.Storage.toggle("enabled").catch(console.error);
+  if (command === "random-theme") NEXORA.Storage.randomTheme().catch(console.error);
+  if (command === "toggle-review-focus") {
+    chrome.tabs.query({ active: true, currentWindow: true }).then(([tab]) => {
+      if (tab?.url?.startsWith("https://github.com/")) return chrome.tabs.sendMessage(tab.id, { type: "nexora:review-focus" }, { frameId: 0 });
+    }).catch(() => {});
+  }
 });
