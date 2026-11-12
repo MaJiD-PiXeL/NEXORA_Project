@@ -1,13 +1,16 @@
+/* NEXORA: canonical local brand fonts; no external requests. */
+@font-face { font-family: "Manrope"; src: url("../fonts/Manrope-Variable.ttf") format("truetype"); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Vazirmatn"; src: url("../fonts/Vazirmatn-Variable.ttf") format("truetype"); font-weight: 100 900; font-style: normal; font-display: swap; }
 :root {
-  --ui-bg: #08090c;
-  --ui-bg-elevated: #10131b;
-  --ui-bg-card: #141822;
-  --ui-border: #293143;
-  --ui-text-primary: #f4f7fa;
-  --ui-text-secondary: #a1adc4;
-  --ui-accent: #7c9dff;
-  --ui-accent-rgb: 124, 157, 255;
-  --ui-accent-soft: rgba(124,157,255,.1);
+  --ui-bg: #08090b;
+  --ui-bg-elevated: #0d0f12;
+  --ui-bg-card: #15171b;
+  --ui-border: #303339;
+  --ui-text-primary: #ffffff;
+  --ui-text-secondary: #bfc3c8;
+  --ui-accent: #426bff;
+  --ui-accent-rgb: 66, 107, 255;
+  --ui-accent-soft: rgba(66,107,255,.1);
   --ui-success: #62dfaa;
   --ui-warning: #f5c270;
   --ui-error: #ff8c98;
@@ -15,5 +18,7 @@
   --ui-radius-md: 14px;
   --ui-radius-lg: 20px;
   --ui-shadow: 0 8px 30px rgba(0,0,0,.3);
-  --ui-font: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-font: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
+
+html[lang="fa"] { --ui-font: "Vazirmatn", Tahoma, sans-serif; }

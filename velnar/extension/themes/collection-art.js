@@ -1,8 +1,8 @@
-globalThis.VELNAR = globalThis.VELNAR || {};
+globalThis.NEXORA = globalThis.NEXORA || {};
 
 // Local vector artwork, shared by the cards, dashboard and contribution stories.
 // Character coordinates match CharacterArt's 160 x 192 canvas and gradient palette.
-VELNAR.CollectionArt = (() => {
+NEXORA.CollectionArt = (() => {
   const ink = body => `<g stroke="#17202c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${body}</g>`;
   const characters = {
     'batman': ink(`

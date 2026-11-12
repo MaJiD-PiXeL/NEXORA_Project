@@ -1,7 +1,7 @@
-globalThis.VELNAR = globalThis.VELNAR || {};
+globalThis.NEXORA = globalThis.NEXORA || {};
 
 // Original, code-native artwork. The same vector scenes power cards and previews.
-VELNAR.SceneArt = (() => {
+NEXORA.SceneArt = (() => {
   let serial = 0;
   const web = '<path d="M0 0 300 300M0 0 300 95M0 0 95 300M0 0 300 0M0 0 0 300M28 0Q23 24 0 28M74 0Q59 58 0 74M140 0Q108 108 0 140M222 0Q173 174 0 222M300 25Q244 244 25 300" fill="none" stroke="currentColor" stroke-width="1.4"/>';
   const portal = '<g class="vn-orbit"><circle cx="150" cy="150" r="104" fill="#183923" stroke="#b2f45d" stroke-width="12"/><circle cx="150" cy="150" r="90" fill="none" stroke="#dcff9c" stroke-width="3" stroke-dasharray="48 18 8 25"/><path d="M148 60C235 57 262 185 180 222S66 193 83 130s114-60 125 5-66 77-80 38 35-51 43-23" fill="none" stroke="#89e85a" stroke-width="12" stroke-linecap="round"/><circle cx="150" cy="150" r="117" fill="none" stroke="#59ddde" stroke-width="2" stroke-dasharray="2 12"/></g>';
@@ -19,69 +19,16 @@ VELNAR.SceneArt = (() => {
   const motifs = { "spider-man": `<g class="vn-web-draw">${web}</g>`, "the-last-of-us": `<g class="vn-sway">${fungus}</g>`, "red-dead": `<circle class="vn-pulse" cx="150" cy="150" r="115" fill="#dc5133" opacity=".5"/>${outlaw}`, "rick-and-morty": portal, "iron-man": reactor };
   return {
     svg(id) {
-      const theme = VELNAR.getThemeById(id);
-      const background=backgrounds[id] || VELNAR.CollectionArt?.backgrounds[id];
+      const theme = NEXORA.getThemeById(id);
+      const background=backgrounds[id] || NEXORA.CollectionArt?.backgrounds[id];
       if (!theme?.scene || !background) return "";
       const serialId = ++serial;
       const gradient = `vn-art-glow-${serialId}`;
       const subjectGlow = `vn-art-subject-${serialId}`;
       const groundGlow = `vn-art-ground-${serialId}`;
-      const character = VELNAR.CharacterArt.svg(id).replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '');
+      const character = NEXORA.CharacterArt.svg(id).replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '');
       return `<svg class="vn-art vn-art--${id}" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><radialGradient id="${gradient}"><stop stop-color="${theme.colors.accentSecondary}" stop-opacity=".32"/><stop offset="1" stop-color="${theme.colors.background}" stop-opacity="0"/></radialGradient><radialGradient id="${subjectGlow}"><stop stop-color="${theme.colors.accent}" stop-opacity=".22"/><stop offset=".48" stop-color="${theme.colors.accentSecondary}" stop-opacity=".12"/><stop offset="1" stop-color="${theme.colors.background}" stop-opacity="0"/></radialGradient><filter id="${groundGlow}" x="-40%" y="-200%" width="180%" height="500%"><feGaussianBlur stdDeviation="12"/></filter></defs><path fill="${theme.colors.background}" d="M0 0h640v360H0Z"/><path fill="url(#${gradient})" d="M0 0h640v360H0Z"/>${background}<ellipse cx="320" cy="168" rx="170" ry="185" fill="url(#${subjectGlow})"/><ellipse cx="320" cy="326" rx="122" ry="18" fill="${theme.colors.accentSecondary}" opacity=".48" filter="url(#${groundGlow})"/><g class="vn-subject"><g transform="translate(174 4) scale(1.823)">${character}</g></g></svg>`;
     },
-    motif(id) { const body=motifs[id] || VELNAR.CollectionArt?.motif(id);return body ? `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${body}</svg>` : ""; },
-    motionCss: `
-      .vn-art { display:block; width:100%; height:100%; overflow:hidden; }
-      .vn-orbit,.vn-counter-orbit { transform-origin:150px 150px; }
-      @keyframes vn-orbit { to { transform:rotate(360deg); } }
-      @keyframes vn-pulse { 50% { opacity:.55; } }
-      @keyframes vn-subject { 50% { transform:translateY(-5px); } }
-      @keyframes vn-banner-spider { 0%,100%{transform:translate(0,0) rotate(0)}30%{transform:translate(-7px,-8px) rotate(-3deg)}62%{transform:translate(8px,-3px) rotate(4deg)} }
-      @keyframes vn-banner-ellie { 0%,100%{transform:translate(0,0) rotate(0)}37%{transform:translate(2px,3px) rotate(-3deg)}72%{transform:translate(-3px,-2px) rotate(2deg)} }
-      @keyframes vn-banner-arthur { 0%,100%{transform:translate(0,0) rotate(0)}30%{transform:translate(3px,0) rotate(-2deg)}39%{transform:translate(-2px,1px) rotate(2deg)}68%{transform:translate(1px,-2px)} }
-      @keyframes vn-banner-rick { 0%,100%{transform:translate(0,1px)}28%{transform:translate(-5px,-4px) rotate(-2deg)}62%{transform:translate(5px,-1px) rotate(2deg)} }
-      @keyframes vn-banner-iron { 0%,100%{transform:translate(0,2px) rotate(0)}35%{transform:translate(-5px,-6px) rotate(-3deg)}68%{transform:translate(7px,-2px) rotate(3deg)} }
-      @keyframes vn-banner-batman { 0%,100%{transform:translate(0,0) rotate(0)}33%{transform:translate(-8px,-7px) rotate(-3deg)}70%{transform:translate(8px,-4px) rotate(3deg)} }
-      @keyframes vn-banner-vader { 0%,100%{transform:translate(0,1px) rotate(0)}32%{transform:translate(-2px,0) rotate(-1deg)}61%{transform:translate(3px,-2px) rotate(1deg)} }
-      @keyframes vn-banner-harry { 0%,100%{transform:translate(0,1px) rotate(0)}35%{transform:translate(-3px,-5px) rotate(-2deg)}68%{transform:translate(4px,-2px) rotate(2deg)} }
-      @keyframes vn-banner-deadpool { 0%,100%{transform:translate(0,0) rotate(0)}28%{transform:translate(-3px,-3px) rotate(-4deg)}46%{transform:translate(3px,0) rotate(4deg)}65%{transform:translate(-2px,-2px) rotate(-3deg)} }
-      @keyframes vn-banner-eleven { 0%,100%{transform:translate(0,0)}36%{transform:translate(-3px,-9px) rotate(-2deg)}69%{transform:translate(4px,-5px) rotate(2deg)} }
-      @keyframes vn-banner-wednesday { 0%,100%{transform:translate(0,0) rotate(0)}28%{transform:translate(-3px,-2px) rotate(-4deg)}48%{transform:translate(3px,0) rotate(4deg)}69%{transform:translate(-2px,-2px) rotate(-3deg)} }
-      @keyframes vn-banner-squid { 0%,100%{transform:translate(0,0)}34%{transform:translate(-2px,1px) rotate(-1deg)}61%{transform:translate(2px,-1px) rotate(1deg)} }
-      @keyframes vn-banner-kratos { 0%,100%{transform:translate(0,0) rotate(0)}34%{transform:translate(-3px,1px) rotate(-3deg)}43%{transform:translate(3px,-2px) rotate(3deg)}69%{transform:translate(1px,0) rotate(-1deg)} }
-      @keyframes vn-banner-ezio { 0%,100%{transform:translate(0,0) rotate(0)}30%{transform:translate(-5px,-6px) rotate(-4deg)}50%{transform:translate(3px,-2px) rotate(2deg)}72%{transform:translate(-2px,0) rotate(-1deg)} }
-      @keyframes vn-banner-steve { 0%,100%{transform:translate(0,1px)}31%{transform:translate(-2px,-2px) rotate(-2deg)}39%{transform:translate(2px,1px) rotate(2deg)}56%{transform:translate(0,0)} }
-      @keyframes vn-cape { 0%,100%{transform:skewX(0) scaleX(1)}50%{transform:skewX(-5deg) scaleX(1.04)} }
-      @media (prefers-reduced-motion:no-preference) {
-        .vn-art--spider-man .vn-subject{animation:vn-banner-spider 5.2s ease-in-out infinite}
-        .vn-art--the-last-of-us .vn-subject{animation:vn-banner-ellie 6s ease-in-out infinite}
-        .vn-art--red-dead .vn-subject{animation:vn-banner-arthur 7s ease-in-out infinite}
-        .vn-art--rick-and-morty .vn-subject{animation:vn-banner-rick 5.7s ease-in-out infinite}
-        .vn-art--iron-man .vn-subject{animation:vn-banner-iron 4.8s ease-in-out infinite}
-        .vn-art--batman .vn-subject{animation:vn-banner-batman 5.1s ease-in-out infinite}
-        .vn-art--star-wars .vn-subject{animation:vn-banner-vader 6.2s ease-in-out infinite}
-        .vn-art--harry-potter .vn-subject{animation:vn-banner-harry 5.5s ease-in-out infinite}
-        .vn-art--deadpool .vn-subject{animation:vn-banner-deadpool 4.5s ease-in-out infinite}
-        .vn-art--stranger-things .vn-subject{animation:vn-banner-eleven 5.3s ease-in-out infinite}
-        .vn-art--wednesday .vn-subject{animation:vn-banner-wednesday 4.8s ease-in-out infinite}
-        .vn-art--squid-game .vn-subject{animation:vn-banner-squid 5.8s ease-in-out infinite}
-        .vn-art--god-of-war .vn-subject{animation:vn-banner-kratos 5.4s ease-in-out infinite}
-        .vn-art--assassins-creed .vn-subject{animation:vn-banner-ezio 5.1s ease-in-out infinite}
-        .vn-art--minecraft .vn-subject{animation:vn-banner-steve 4.4s ease-in-out infinite}
-        .vn-art--batman .hero-cape{transform-box:fill-box;transform-origin:50% 8%;animation:vn-cape 2.8s ease-in-out infinite}
-        .vn-art--star-wars .hero-saber{filter:drop-shadow(0 0 5px #ff405f);animation:vn-banner-saber 1.4s ease-in-out infinite alternate}
-        @keyframes vn-banner-saber{to{opacity:.72;filter:drop-shadow(0 0 11px #ff405f)}}
-      }
-      @keyframes vn-sway { 50% { transform:rotate(3deg); } }
-      @keyframes vn-web-draw { 0% { stroke-dashoffset:850; opacity:.1; } 35%,85% { stroke-dashoffset:0; opacity:1; } 100% { stroke-dashoffset:0; opacity:.1; } }
-      @media (prefers-reduced-motion:no-preference) {
-        .vn-orbit { animation:vn-orbit 22s linear infinite; }
-        .vn-counter-orbit { animation:vn-orbit 13s linear infinite reverse; }
-        .vn-pulse { animation:vn-pulse 5s ease-in-out infinite; }
-        .vn-subject { animation:vn-subject 7s ease-in-out infinite; }
-        .vn-web-draw { stroke-dasharray:850; animation:vn-web-draw 12s ease-in-out infinite; }
-        .vn-sway { transform-origin:150px 282px; animation:vn-sway 10s ease-in-out infinite; }
-      }
-    `
+    motif(id) { const body=motifs[id] || NEXORA.CollectionArt?.motif(id);return body ? `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${body}</svg>` : ""; }
   };
 })();

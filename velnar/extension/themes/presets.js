@@ -1,7 +1,7 @@
 // list e theme haye amade. har theme faghat ye "base palette" kootah tarif mishe
 // va buildTheme() hameye 28 ta css var ro azash misaze (hover/active/tertiary va ...)
 // in kar baes mishe hame theme ha consistent bashan va ezafe kardane theme jadid rahat bashe
-globalThis.VELNAR = globalThis.VELNAR || {};
+globalThis.NEXORA = globalThis.NEXORA || {};
 
 // -------- color helpers --------
 function gsHexToRgb(hex) {
@@ -117,7 +117,7 @@ function buildTheme(id, name, category, base) {
   return { id, name, category, colors, rgbCycle: !!base.rgbCycle, scene: base.scene || null, tagline: base.tagline || "" };
 }
 
-VELNAR.PRESET_THEMES = [
+NEXORA.PRESET_THEMES = [
   buildTheme("spider-man", "Spider-Man", "cinematic", {
     bg: "#090f21", bgAlt: "#111e38", text: "#edf4ff", textMuted: "#a2b4d0",
     accent: "#ff4562", accent2: "#38a9ff", success: "#62deb5", warning: "#ffd166", error: "#ff667d", navbar: "#0c142a",
@@ -275,12 +275,12 @@ VELNAR.PRESET_THEMES = [
   })
 ];
 
-VELNAR.getThemeById = function (id) {
-  return VELNAR.PRESET_THEMES.find((t) => t.id === id) || null;
+NEXORA.getThemeById = function (id) {
+  return NEXORA.PRESET_THEMES.find((t) => t.id === id) || null;
 };
 
 // Film, television and game expansion. Existing ids and saved settings stay valid.
-VELNAR.PRESET_THEMES.push(...[
+NEXORA.PRESET_THEMES.push(...[
   ["batman","Batman","Gotham after dark","#0a101b","#162235","#efcc66","#90b9df"],
   ["star-wars","Star Wars","The dark side awakens","#120b16","#251a2d","#ff6a75","#9ac5ff"],
   ["harry-potter","Harry Potter","A little magic in every commit","#19101b","#302030","#edc477","#b09de7"],

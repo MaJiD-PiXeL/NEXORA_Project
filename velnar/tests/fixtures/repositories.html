@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Repository list regression fixture</title>
+<style>
+:root { --bgColor-default:#0d1117; --bgColor-inset:#010409; --bgColor-muted:#161b22; --fgColor-default:#f0f6fc; --fgColor-muted:#9198a1; --borderColor-default:#3d444d; }
+* { box-sizing:border-box; } body { margin:0; background:var(--bgColor-inset); color:var(--fgColor-default); font:14px/1.5 system-ui,sans-serif; }
+main { max-width:1120px; margin:20px auto; width:calc(100% - 40px); }
+button,input,summary { font:inherit; } .btn { padding:6px 14px; cursor:pointer; border:1px solid var(--borderColor-default); border-radius:6px; background:var(--bgColor-muted); color:var(--fgColor-default); }
+.toolbar { display:flex; flex-wrap:wrap; gap:10px; padding-bottom:20px; }
+.toolbar input { flex:1; min-width:160px; padding:8px 16px; border:1px solid var(--borderColor-default); border-radius:6px; }
+ul { list-style:none; margin:0; padding:0; } .col-12 { width:100%; } .d-flex { display:flex; } .flex-justify-between { justify-content:space-between; }
+.py-4 { padding-top:24px; padding-bottom:24px; } .border-bottom { border-bottom:1px solid var(--borderColor-default); }
+.repo-details { min-width:0; flex:1; } h3 { font-size:24px; font-weight:600; margin:10px 0 16px; } a { color:#4493f8; text-decoration:none; }
+.Label { display:inline-block; border:1px solid var(--borderColor-default); border-radius:24px; padding:0 7px; font-size:12px; vertical-align:middle; font-weight:500; margin-left:8px; color:var(--fgColor-muted); }
+.meta { color:var(--fgColor-muted); display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.language { display:inline-block; width:13px; height:13px; border-radius:50%; background:#3572a5; vertical-align:middle; }
+.repo-actions { display:flex; flex-direction:column; align-items:flex-end; justify-content:center; gap:16px; min-width:140px; }
+.star-group { display:flex; } .star-group .btn:first-child { border-top-right-radius:0; border-bottom-right-radius:0; } .star-group .btn:last-child { padding-inline:8px; }
+.sparkline { width:155px; height:30px; fill:none; stroke:#238636; stroke-width:2; }
+.Box { border:1px solid var(--borderColor-default); border-radius:6px; background:var(--bgColor-default); margin-block:20px; }
+.Box-row { padding:14px 16px; border-top:1px solid var(--borderColor-default); } .Box-row:first-child { border-top:0; }
+#unrelated-row,#unrelated-source { padding:16px; border-radius:0; background:transparent; }
+.pagination { display:flex; justify-content:center; gap:12px; padding:16px; }
+@media(max-width:600px) { main { width:calc(100% - 24px); } h3 { font-size:18px; } .repo-actions { min-width:88px; } .sparkline { display:none; } .star-group .btn { padding:5px 8px; } }
+</style></head><body><main>
+<div class="toolbar"><input placeholder="Find a repository…" aria-label="Find a repository"><button class="btn">Type ▾</button><button class="btn">Language ▾</button><button class="btn">Sort ▾</button><button class="btn btn-primary">▣ New</button></div>
+<div id="user-repositories-list"><ul>
+<li class="col-12 d-flex flex-justify-between width-full py-4 border-bottom color-border-muted" data-repo="one">
+<div class="repo-details"><h3><a href="#repository-one" itemprop="name codeRepository">repository-one</a><span class="Label">Public</span></h3><div class="meta"><span><i class="language"></i> Python</span><span>Updated 25 minutes ago</span></div></div>
+<div class="repo-actions"><div class="star-group"><button class="btn star-button" type="button" aria-pressed="false">☆ Star</button><button class="btn" aria-label="Choose a list">▾</button></div><svg class="sparkline" viewBox="0 0 155 30" aria-label="Repository activity"><path d="M0 25H105l5 -8 6 4 8 -5 8 6 8 -2 8 5 7 -6"/></svg></div>
+</li>
+<li class="col-12 d-flex flex-justify-between width-full py-4 border-bottom color-border-muted" data-repo="two">
+<div class="repo-details"><h3><a href="#repository-two" itemprop="name codeRepository">repository-two</a><span class="Label">Private</span></h3><div class="meta"><span><i class="language" style="background:#e34c26"></i> HTML</span><span>Updated 16 hours ago</span></div></div>
+<div class="repo-actions"><div class="star-group"><button class="btn star-button" type="button" aria-pressed="false">☆ Star</button><button class="btn" aria-label="Choose a list">▾</button></div><svg class="sparkline" viewBox="0 0 155 30" aria-label="Repository activity"><path d="M0 25H105l5 -8 6 4 8 -5 8 6 8 -2 8 5 7 -6"/></svg></div>
+</li>
+<li class="col-12 d-flex flex-justify-between width-full py-4 border-bottom color-border-muted" data-repo="three">
+<div class="repo-details"><h3><a href="#repository-three" itemprop="name codeRepository">a-long-repository-name-that-needs-to-wrap-without-overlapping-the-star-controls</a><span class="Label">Public</span></h3><div class="meta"><span><i class="language"></i> Python</span><span>Updated 2 days ago</span></div></div>
+<div class="repo-actions"><div class="star-group"><button class="btn star-button" type="button" aria-pressed="false">☆ Star</button><button class="btn" aria-label="Choose a list">▾</button></div><svg class="sparkline" viewBox="0 0 155 30" aria-label="Repository activity"><path d="M0 25H105l5 -8 6 4 8 -5 8 6 8 -2 8 5 7 -6"/></svg></div>
+</li>
+</ul><nav class="pagination" aria-label="Pagination"><a href="#previous">Previous</a><a href="#next">Next</a></nav></div>
+<div class="Box" id="file-list"><div class="Box-row">src</div><div class="Box-row">README.md</div><div class="Box-row">package.json</div></div>
+<div class="col-12 d-flex flex-justify-between" id="unrelated-row"><span>Unrelated utility row</span><span>Must keep its native layout</span></div>
+<div class="source-list" id="unrelated-source">Unrelated source-list wrapper</div>
+</main><script>document.querySelectorAll('.star-button').forEach(button=>button.addEventListener('click',()=>button.setAttribute('aria-pressed',String(button.getAttribute('aria-pressed')!=='true'))));</script></body></html>

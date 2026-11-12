@@ -18,9 +18,9 @@ async function until(read, expected, label) {
 
 (async () => {
   fs.mkdirSync(artifacts, { recursive: true });
-  const profile = fs.mkdtempSync(path.join(os.tmpdir(), "velnar-smoke-"));
+  const profile = fs.mkdtempSync(path.join(os.tmpdir(), "nexora-smoke-"));
   const edge = "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe";
-  const executablePath = process.env.VELNAR_BROWSER || (fs.existsSync(edge) ? edge : undefined);
+  const executablePath = process.env.NEXORA_BROWSER || (fs.existsSync(edge) ? edge : undefined);
   const context = await chromium.launchPersistentContext(profile, {
     executablePath, headless: true, viewport: { width: 1440, height: 1024 },
     args: ["--disable-extensions-except=" + path.join(root, "extension"), "--load-extension=" + path.join(root, "extension")]
@@ -42,13 +42,13 @@ async function until(read, expected, label) {
 
     const github = await context.newPage();
     // Deterministic GitHub-shaped fixture: no signed-in account or remote data.
-    await github.route("https://github.com/velnar-test*", route => route.fulfill({ contentType: "text/html", body: `<!doctype html><html><head><title>VELNAR test fixture</title></head><body>
+    await github.route("https://github.com/nexora-test*", route => route.fulfill({ contentType: "text/html", body: `<!doctype html><html><head><title>NEXORA test fixture</title></head><body>
       <header class="AppHeader"><div class="AppHeader-globalBar">GitHub fixture</div></header>
       <main><div class="vcard-names">Example profile</div><button class="btn btn-primary">Primary action</button>
       <div class="Box">Repository card</div><div class="js-calendar-graph"><table class="js-calendar-graph-table"><tr><td class="ContributionCalendar-day" data-level="4">Day</td></tr></table></div>
       <p id="custom-target">Custom CSS target</p></main></body></html>` }));
-    await github.goto("https://github.com/velnar-test");
-    await github.locator("#velnar-theme-vars").waitFor({ state: "attached" });
+    await github.goto("https://github.com/nexora-test");
+    await github.locator("#nexora-theme-vars").waitFor({ state: "attached" });
     await options.getByRole("button", { name: "Apply Dracula theme", exact: true }).click();
     await until(() => github.evaluate(() => getComputedStyle(document.body).backgroundColor), "rgb(40, 42, 54)", "theme reaches content script");
     await options.getByRole("searchbox", { name: "Search themes" }).fill("arctic");
@@ -76,10 +76,10 @@ async function until(read, expected, label) {
     const other = await context.newPage(); await other.goto(`${base}/options/options.html`);
     await other.locator(".gs-color-field").first().waitFor({ state: "attached" });
     await Promise.all([
-      options.evaluate(() => VELNAR.Storage.set({ layout: { shadowIntensity: 0 } })),
-      other.evaluate(() => VELNAR.Storage.set({ typography: { fontSize: 18 } }))
+      options.evaluate(() => NEXORA.Storage.set({ layout: { shadowIntensity: 0 } })),
+      other.evaluate(() => NEXORA.Storage.set({ typography: { fontSize: 18 } }))
     ]);
-    const settings = await options.evaluate(() => VELNAR.Storage.get());
+    const settings = await options.evaluate(() => NEXORA.Storage.get());
     assert.equal(settings.layout.shadowIntensity, 0); assert.equal(settings.typography.fontSize, 18);
     await until(() => github.locator(".btn-primary").evaluate(el => /rgba\(0, 0, 0, 0\)|color\(srgb [^)]*\/ 0\)/.test(getComputedStyle(el).boxShadow)), true, "zero shadow is transparent");
     await other.close();
@@ -90,31 +90,31 @@ async function until(read, expected, label) {
     await until(() => github.evaluate(() => getComputedStyle(document.body).backgroundColor), "rgb(18, 52, 86)", "legacy theme import");
     await options.getByLabel("Restore settings JSON").setInputFiles({ name: "invalid.json", mimeType: "application/json", buffer: Buffer.from('{"favoriteThemeIds":123}') });
     await until(() => options.locator("#statusMessage").getAttribute("class"), "gs-status is-error", "invalid import feedback");
-    assert.equal((await options.evaluate(() => VELNAR.Storage.get())).customTheme.name, "Imported blue");
-    await options.evaluate(() => VELNAR.Storage.restore(VELNAR.DEFAULT_SETTINGS));
+    assert.equal((await options.evaluate(() => NEXORA.Storage.get())).customTheme.name, "Imported blue");
+    await options.evaluate(() => NEXORA.Storage.restore(NEXORA.DEFAULT_SETTINGS));
     await until(() => github.evaluate(() => getComputedStyle(document.body).backgroundColor), "rgb(13, 17, 23)", "restore defaults");
     console.log("PASS: legacy theme import and invalid-backup rejection");
 
-    await options.evaluate(() => VELNAR.Storage.set({ animationsEnabled: true, componentOverrides: { navbar: false, buttons: false } }));
+    await options.evaluate(() => NEXORA.Storage.set({ animationsEnabled: true, componentOverrides: { navbar: false, buttons: false } }));
     await until(() => github.locator(".AppHeader-globalBar").evaluate(el => getComputedStyle(el).animationName), "none", "disabled navbar does not animate");
-    await options.evaluate(() => VELNAR.Storage.set({ componentOverrides: { navbar: true, buttons: true } }));
-    await until(() => github.locator(".AppHeader-globalBar").evaluate(el => getComputedStyle(el).backgroundImage !== "none"), true, "enabled navbar keeps its static gradient");
+    await options.evaluate(() => NEXORA.Storage.set({ componentOverrides: { navbar: true, buttons: true } }));
+    assert.equal(await github.locator("#nexora-animations").count(), 0, "motion stylesheet is never created");
     assert.equal(await github.locator(".AppHeader-globalBar").evaluate(el => getComputedStyle(el).animationName), "none", "no perpetual header repaint");
     await github.emulateMedia({ reducedMotion: "reduce" });
     assert.equal(await github.locator(".AppHeader-globalBar").evaluate(el => getComputedStyle(el).animationName), "none");
     assert.equal(await github.locator(".btn-primary").evaluate(el => getComputedStyle(el).animationName), "none");
     assert.equal(await github.locator(".ContributionCalendar-day").evaluate(el => getComputedStyle(el).animationName), "none");
-    await github.evaluate(() => { document.getElementById("velnar-theme-vars").remove(); document.dispatchEvent(new Event("turbo:load")); });
-    await github.locator("#velnar-theme-vars").waitFor({ state: "attached" });
+    await github.evaluate(() => { document.getElementById("nexora-theme-vars").remove(); document.dispatchEvent(new Event("turbo:load")); });
+    await github.locator("#nexora-theme-vars").waitFor({ state: "attached" });
     console.log("PASS: component toggles, reduced motion and SPA style recovery");
 
-    await options.evaluate(() => VELNAR.Storage.reset());
+    await options.evaluate(() => NEXORA.Storage.reset());
     await options.getByRole("button", { name: "Themes", exact: true }).click();
-    await options.evaluate(() => VELNAR.UI.status(""));
-    await options.screenshot({ path: path.join(artifacts, "velnar-settings.png"), fullPage: true });
+    await options.evaluate(() => NEXORA.UI.status(""));
+    await options.screenshot({ path: path.join(artifacts, "nexora-settings.png"), fullPage: true });
     await options.getByRole("button", { name: "Theme Builder", exact: true }).click();
     await options.getByRole("button", { name: "Start from active theme", exact: true }).click();
-    await options.screenshot({ path: path.join(artifacts, "velnar-builder.png"), fullPage: true });
+    await options.screenshot({ path: path.join(artifacts, "nexora-builder.png"), fullPage: true });
     await options.setViewportSize({ width: 390, height: 844 });
     assert.equal(await options.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, "mobile options overflow");
 
@@ -126,15 +126,15 @@ async function until(read, expected, label) {
     await until(() => popup.getByRole("switch", { name: "Enable extension", exact: true }).getAttribute("aria-checked"), "false", "keyboard toggle");
     await popup.getByRole("switch", { name: "Enable extension", exact: true }).press("Space");
     await until(() => popup.getByRole("switch", { name: "Enable extension", exact: true }).getAttribute("aria-checked"), "true", "keyboard toggle restore");
-    await popup.screenshot({ path: path.join(artifacts, "velnar-popup.png"), fullPage: true });
+    await popup.screenshot({ path: path.join(artifacts, "nexora-popup.png"), fullPage: true });
     console.log("PASS: keyboard controls, popup and responsive options");
 
     const landing = await context.newPage(); await landing.goto(pathToFileURL(path.join(root, "landing/index.html")).href);
-    assert.equal(await landing.locator(".theme-chip").count(), 45);
-    assert.equal(await landing.locator("#install").getAttribute("href"), "../dist/velnar-extension.zip");
-    await landing.screenshot({ path: path.join(artifacts, "velnar-landing.png"), fullPage: true });
+    assert.equal(await landing.locator("#worldPicker button").count(), 15);
+    assert.ok(await landing.locator('a[href="../dist/nexora-extension.zip"]').count() > 0);
+    await landing.screenshot({ path: path.join(artifacts, "nexora-landing.png"), fullPage: true });
     assert.deepEqual(errors, [], "browser errors");
-    fs.writeFileSync(path.join(artifacts, "browser-results.json"), JSON.stringify({ passed: true, browser: await context.browser().version(), fixture: "local HTML routed at github.com/velnar-test", errors }, null, 2));
+    fs.writeFileSync(path.join(artifacts, "browser-results.json"), JSON.stringify({ passed: true, browser: await context.browser().version(), fixture: "local HTML routed at github.com/nexora-test", errors }, null, 2));
     console.log("PASS: landing page, matching palette inventory and no page errors");
   } catch (error) {
     for (const [i, page] of context.pages().entries()) await page.screenshot({ path: path.join(artifacts, `failure-${i}.png`) }).catch(() => {});

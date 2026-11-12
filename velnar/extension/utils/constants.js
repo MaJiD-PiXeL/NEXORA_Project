@@ -1,12 +1,12 @@
 // in file mishe hameye const haye moshtarak beyne background/content/popup/options
 // hame ja az hamin namespace estefade mikonim ke ba var haye khode github ghati nashe
-globalThis.VELNAR = globalThis.VELNAR || {};
+globalThis.NEXORA = globalThis.NEXORA || {};
 
-VELNAR.STORAGE_KEY = "velnar_settings_v1";
+NEXORA.STORAGE_KEY = "nexora_settings_v1";
 
 // laziste kamele css var ha. nesbat be ghabl kheili gostarde tar shode
 // ta Theme Builder betune vaghean hame ja ro poshesh bede, na faghat rang haye asli
-VELNAR.CSS_VAR_MAP = {
+NEXORA.CSS_VAR_MAP = {
   background: "--gs-bg",
   backgroundSecondary: "--gs-bg-secondary",
   backgroundTertiary: "--gs-bg-tertiary",
@@ -41,7 +41,7 @@ VELNAR.CSS_VAR_MAP = {
 
 // har component chand css selector daare. in map to injector.js estefade mishe
 // ta user betune har bakhsh ro joda joda khamush/roshan kone
-VELNAR.COMPONENTS = [
+NEXORA.COMPONENTS = [
   { id: "navbar", label: "Navbar" },
   { id: "sidebar", label: "Sidebar" },
   { id: "repoCards", label: "Repository Cards" },
@@ -52,7 +52,7 @@ VELNAR.COMPONENTS = [
   { id: "markdown", label: "Markdown" },
   { id: "issues", label: "Issues" },
   { id: "pullRequests", label: "Pull Requests" },
-  { id: "profile", label: "Profile & cinematic atmosphere" },
+  { id: "profile", label: "Profile" },
   { id: "followers", label: "Followers/Following" },
   { id: "notifications", label: "Notifications" },
   { id: "commitList", label: "Commit List" },
@@ -65,21 +65,24 @@ VELNAR.COMPONENTS = [
 
 function gsDefaultComponentOverrides() {
   const out = {};
-  VELNAR.COMPONENTS.forEach((c) => (out[c.id] = true));
+  NEXORA.COMPONENTS.forEach((c) => (out[c.id] = true));
   return out;
 }
 
 // default settings, age chizi to storage nabud az hamin estefade mishe
-VELNAR.DEFAULT_SETTINGS = {
+NEXORA.DEFAULT_SETTINGS = {
   enabled: true,
   activeThemeId: "dark",
   customThemeApplied: false,
   autoDarkMode: false,
   autoDarkModeLightTheme: "light",
   autoDarkModeDarkTheme: "dark",
-  animationsEnabled: false,
-  webSwingerEnabled: false,
   favoriteThemeIds: [],
+  language: "en",
+  personalThemes: [],
+  repositoryThemes: {},
+  builderDraft: null,
+  appearanceHistory: [],
   typography: {
     fontFamily: "",
     fontSize: 14,
@@ -97,10 +100,17 @@ VELNAR.DEFAULT_SETTINGS = {
   customTheme: null // vaghti user theme khodesho misaze mire injaa
 };
 
-VELNAR.STYLE_TAG_ID = "velnar-theme-vars";
-VELNAR.CUSTOM_CSS_TAG_ID = "velnar-custom-css";
-VELNAR.TYPOGRAPHY_TAG_ID = "velnar-typography";
-VELNAR.COMPONENTS_TAG_ID = "velnar-components";
-VELNAR.ANIMATIONS_TAG_ID = "velnar-animations";
-VELNAR.WEB_SWINGER_STYLE_ID = "velnar-web-swinger-style";
-VELNAR.WEB_SWINGER_ELEMENT_ID = "velnar-web-swinger";
+NEXORA.STYLE_TAG_ID = "nexora-theme-vars";
+// History deliberately excludes the library, favorites, language and draft.
+NEXORA.APPEARANCE_KEYS = ["activeThemeId", "customThemeApplied", "customTheme", "autoDarkMode", "autoDarkModeLightTheme", "autoDarkModeDarkTheme", "typography", "layout", "componentOverrides", "customCss", "customCssEnabled"];
+NEXORA.HISTORY_LIMIT = 20;
+NEXORA.PERSONAL_THEME_LIMIT = 50;
+NEXORA.REPOSITORY_THEME_LIMIT = 100;
+NEXORA.CUSTOM_CSS_TAG_ID = "nexora-custom-css";
+NEXORA.TYPOGRAPHY_TAG_ID = "nexora-typography";
+NEXORA.COMPONENTS_TAG_ID = "nexora-components";
+NEXORA.REVIEW_FOCUS_TAG_ID = "nexora-review-focus";
+NEXORA.REPOSITORY_META_SELECTOR = 'meta[name="octolytics-dimension-repository_nwo"]';
+NEXORA.ANIMATIONS_TAG_ID = "nexora-animations";
+NEXORA.WEB_SWINGER_STYLE_ID = "nexora-web-swinger-style";
+NEXORA.WEB_SWINGER_ELEMENT_ID = "nexora-web-swinger";

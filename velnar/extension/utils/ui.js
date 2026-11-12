@@ -1,5 +1,5 @@
-globalThis.VELNAR = globalThis.VELNAR || {};
-VELNAR.UI = {
+globalThis.NEXORA = globalThis.NEXORA || {};
+NEXORA.UI = {
   status(message, error = false) {
     const region = document.getElementById("statusMessage");
     if (!region) return;
@@ -25,7 +25,7 @@ VELNAR.UI = {
   colors(settings) {
     return settings.customThemeApplied && settings.customTheme && !settings.autoDarkMode
       ? settings.customTheme.colors
-      : (VELNAR.getThemeById(this.activeThemeId(settings)) || VELNAR.getThemeById("dark")).colors;
+      : (NEXORA.getThemeById(this.activeThemeId(settings)) || NEXORA.getThemeById("dark")).colors;
   },
   setValue(element, value) {
     if (document.activeElement !== element) element.value = value;

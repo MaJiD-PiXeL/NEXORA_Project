@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VELNAR Settings</title>
+  <title>NEXORA Settings</title>
+  <link rel="icon" type="image/svg+xml" href="../icons/nexora-mark.svg" />
   <link rel="stylesheet" href="../styles/variables.css" />
   <link rel="stylesheet" href="../styles/base.css" />
   <link rel="stylesheet" href="options.css" />
@@ -13,18 +14,19 @@
   <div class="gs-app">
     <aside class="gs-sidebar">
       <div class="gs-brand">
-        <img class="gs-logo-img" src="../icons/velnar-mark.svg" alt="VELNAR" />
-        VELNAR
+        <img class="gs-logo-img" src="../icons/nexora-mark.svg" alt="" />
+        NEXORA
       </div>
-      <nav class="gs-nav">
-        <button class="gs-nav-item is-active" data-tab="themes"><i class="gs-ico" aria-hidden="true">◧</i>Themes</button>
-        <button class="gs-nav-item" data-tab="builder"><i class="gs-ico" aria-hidden="true">◐</i>Theme Builder</button>
-        <button class="gs-nav-item" data-tab="typography"><i class="gs-ico" aria-hidden="true">Aa</i>Typography</button>
-        <button class="gs-nav-item" data-tab="components"><i class="gs-ico" aria-hidden="true">▤</i>Components</button>
-        <button class="gs-nav-item" data-tab="customcss"><i class="gs-ico" aria-hidden="true">{ }</i>Custom CSS</button>
-        <button class="gs-nav-item" data-tab="importexport"><i class="gs-ico" aria-hidden="true">⇅</i>Import / Export</button>
-        <button class="gs-nav-item" data-tab="settings"><i class="gs-ico" aria-hidden="true">⚙</i>Settings</button>
-        <button class="gs-nav-item" data-tab="about"><i class="gs-ico" aria-hidden="true">ℹ</i>About</button>
+      <div class="vn-nav-label">WORKSPACE</div>
+      <nav class="gs-nav" aria-label="Settings navigation">
+        <button class="gs-nav-item is-active" data-tab="themes" aria-current="page"><svg class="gs-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 9v12"/></svg>Themes</button>
+        <button class="gs-nav-item" data-tab="builder"><svg class="gs-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h9"/></svg>Theme Builder</button>
+        <button class="gs-nav-item" data-tab="typography"><svg class="gs-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 19 6-14 6 14M5 14h8M17 10h4M19 10v9"/></svg>Typography</button>
+        <button class="gs-nav-item" data-tab="components"><svg class="gs-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Components</button>
+        <button class="gs-nav-item" data-tab="customcss"><svg class="gs-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6M14 3l-4 18"/></svg>Custom CSS</button>
+        <button class="gs-nav-item" data-tab="importexport"><svg class="gs-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v15m-4-4 4 4 4-4M17 21V6m-4 4 4-4 4 4"/></svg>Import / Export</button>
+        <button class="gs-nav-item" data-tab="settings"><svg class="gs-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 4 4 1v8l-4 1-1 4H9l-1-4-4-1V8l4-1z"/><circle cx="12" cy="12" r="3"/></svg>Settings</button>
+        <button class="gs-nav-item" data-tab="about"><svg class="gs-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v1"/></svg>About</button>
       </nav>
       <div class="gs-sidebar-foot">
         <div class="gs-toggle-row gs-toggle-row-compact">
@@ -35,42 +37,34 @@
     </aside>
 
     <main class="gs-main">
-      <!-- Themes -->
+      <header class="studio-topbar"><span>Workspace <span class="studio-slash">/</span> Preferences</span><span class="studio-local"><i></i> Stored on this device</span></header>
       <section class="gs-tab is-active" id="tab-themes">
-        <div class="gs-page-eyebrow">YOUR GITHUB, REIMAGINED</div>
-        <h1 tabindex="-1">Make it yours.</h1>
-        <p class="gs-sub">Find your focus. Choose from 45 palettes or create one that feels like you.</p>
-
-        <div id="autoDarkBannerOptions" class="gs-banner" hidden>
-          System appearance is on. Choosing a theme switches to manual mode. <button id="btnDisableAutoDarkOptions" class="gs-banner-link">turn it off</button>.
+        <div class="studio-page-heading"><div><h1 tabindex="-1">Appearance</h1><p class="gs-sub">Your GitHub, with your attention to detail.</p></div><button class="gs-btn gs-btn-ghost" id="btnUndoTheme" disabled>↶ Undo change</button></div>
+        <div id="autoDarkBannerOptions" class="gs-banner" hidden>System appearance is on. Applying a theme switches to manual mode. <button id="btnDisableAutoDarkOptions" class="gs-banner-link">Use manual mode</button></div>
+        <div class="studio-current"><span class="studio-state-dot"></span><span>Current theme <strong id="activeThemeName"></strong></span><span id="workspaceSummary"></span><button id="btnCustomizeActive" class="studio-text-button">Edit palette ↗</button></div>
+        <div class="studio-layout">
+          <div class="studio-library">
+            <div class="gs-theme-toolbar"><label class="gs-search-label"><span class="sr-only">Search themes</span><input id="themeSearch" class="gs-input" type="search" placeholder="Search themes…" /><kbd>/</kbd></label><label class="sr-only" for="themeSort">Sort themes</label><select class="gs-input" id="themeSort"><option value="default">Collection order</option><option value="name">Name A–Z</option><option value="favorites">Favorites first</option></select></div>
+            <div class="vn-filter-bar" id="themeFilters" role="group" aria-label="Theme collections"><button data-category="all" aria-pressed="true">All</button><button data-category="favorites" aria-pressed="false">Saved</button><button data-category="official" aria-pressed="false">Official</button><button data-category="community" aria-pressed="false">Community</button><button data-category="cinematic" aria-pressed="false">Cinematic</button><button data-category="gaming" aria-pressed="false">Gaming</button><button data-category="vivid" aria-pressed="false">Vivid</button></div>
+            <div class="studio-library-meta"><span id="libraryCount" aria-live="polite"></span><div><label class="sr-only" for="themeAppearance">Theme appearance</label><select id="themeAppearance"><option value="all">Light & dark</option><option value="dark">Dark only</option><option value="light">Light only</option></select><button class="studio-icon-button" id="btnDensity" aria-label="Use compact theme cards" aria-pressed="false">▦</button></div></div>
+            <div id="themeEmpty" class="vn-empty" hidden><strong>No matching themes</strong><p>Try another search or save a favorite.</p><button id="btnClearFilters" class="gs-btn gs-btn-ghost">Clear filters</button></div>
+            <div class="gs-theme-cards" id="themeGallery"></div>
+            <div class="studio-library-footer"><span>All palettes are included. Make one your own.</span><button class="studio-text-button" id="btnRandomTheme">Shuffle theme ↗</button></div>
+          </div>
+          <aside class="studio-inspector" aria-label="Theme preview">
+            <div class="studio-inspector-heading"><button id="btnPreviewPanel" aria-expanded="true">Preview <span aria-hidden="true">⌃</span></button><span id="previewState">Not applied</span></div>
+            <div class="studio-preview-heading"><h2 id="previewThemeName"></h2><p id="previewThemeDescription"></p></div>
+            <div class="studio-preview-tabs" role="group" aria-label="Preview surface"><button data-surface="repository" aria-pressed="true">Repository</button><button data-surface="code" aria-pressed="false">Code</button><button data-surface="profile" aria-pressed="false">Profile</button><button data-surface="review" aria-pressed="false">Code Review</button></div>
+            <div id="workspacePreview" class="studio-sample" aria-label="Preview palette"></div>
+            <div id="previewPalette" class="studio-palette" aria-label="Preview colors"></div>
+            <div class="studio-preview-detail"><span>Text contrast</span><strong id="previewContrast"></strong></div>
+            <div class="studio-preview-detail"><span>Collection</span><strong id="previewCategory"></strong></div>
+            <div class="studio-preview-actions"><button class="gs-btn" id="btnApplyPreview">Apply theme</button><button class="gs-btn gs-btn-ghost" id="btnCompare">Compare with current</button></div>
+            <p class="studio-preview-note">Previewing keeps your current theme unchanged.</p>
+          </aside>
         </div>
-
-        <div class="gs-theme-toolbar"><label class="gs-search-label"><span class="sr-only">Search themes</span><input id="themeSearch" class="gs-input" type="search" placeholder="Search themes…" /></label><span class="gs-active-label">Current: <strong id="activeThemeName"></strong></span></div>
-        <p id="themeEmpty" hidden>No matching themes. Try a different name.</p>
-        <div class="gs-builder-actions" style="margin-bottom:20px;">
-          <button class="gs-btn gs-btn-ghost" id="btnRandomTheme">🎲 Random Theme</button>
-        </div>
-
-        <div id="favoritesBlock" hidden>
-          <h2 class="gs-group-title">Favorites</h2>
-          <div class="gs-theme-cards" id="themeCardsFavorites"></div>
-        </div>
-
-        <div class="vn-collection-heading" id="cinematicHeading"><div><span class="vn-collection-kicker">FIFTEEN WORLDS. YOUR WORKSPACE.</span><h2>Cinematic collection</h2><p>Choosing one turns effects on. Pause them anytime in Settings.</p></div><a class="gs-btn gs-btn-ghost" href="../preview/preview.html" target="_blank">Preview animations ↗</a></div>
-        <h2 class="sr-only">Cinematic themes</h2>
-        <div class="gs-theme-cards vn-cinematic-grid" id="themeCardsCinematic"></div>
-        <h2 class="gs-group-title">Official</h2>
-        <div class="gs-theme-cards" id="themeCardsOfficial"></div>
-
-        <h2 class="gs-group-title">Gaming 🎮</h2>
-        <div class="gs-theme-cards" id="themeCardsGaming"></div>
-
-        <h2 class="gs-group-title">Vivid ✨</h2>
-        <div class="gs-theme-cards" id="themeCardsVivid"></div>
-
-        <h2 class="gs-group-title">Community</h2>
-        <div class="gs-theme-cards" id="themeCardsCommunity"></div>
       </section>
+      <dialog id="compareDialog" aria-labelledby="compareTitle"><div class="studio-dialog-heading"><div><h2 id="compareTitle">Compare appearance</h2><p>The same workspace. Two different palettes.</p></div><button id="btnCloseCompare" class="studio-icon-button" aria-label="Close comparison">✕</button></div><div class="studio-comparison"><section><span class="vn-overline">CURRENT</span><h3 id="compareCurrentName"></h3><div id="compareCurrent" class="studio-sample"></div></section><section><span class="vn-overline">PREVIEW</span><h3 id="comparePreviewName"></h3><div id="comparePreview" class="studio-sample"></div></section></div><div class="studio-dialog-footer"><span>Changes apply only when you choose Apply theme.</span><button id="btnApplyCompared" class="gs-btn">Apply theme</button></div></dialog>
 
       <!-- Theme Builder -->
       <section class="gs-tab" id="tab-builder">
@@ -81,9 +75,22 @@
           <input type="text" id="themeNameInput" aria-label="Theme name" maxlength="80" placeholder="Theme name" class="gs-input" />
           <button class="gs-btn" id="btnApplyCustom">Apply Custom Theme</button>
           <button class="gs-btn gs-btn-ghost" id="btnLoadPresetIntoBuilder">Start from active theme</button>
+          <button class="gs-btn gs-btn-ghost" id="btnSavePersonal">Save to library</button>
+          <button class="gs-btn gs-btn-ghost" id="btnSaveCopy">Save a copy</button>
+          <button class="gs-btn gs-btn-ghost" id="btnExportDraftCard">Download PNG card</button>
+        </div>
+
+        <p id="draftStatus" class="gs-sub" role="status" aria-live="polite"></p>
+        <div class="builder-generator gs-card">
+          <label>Seed color <input id="paletteSeed" type="color" value="#7c9dff" /></label>
+          <label>Palette appearance <select id="paletteMode" class="gs-input"><option value="dark">Dark</option><option value="light">Light</option></select></label>
+          <button id="btnGeneratePalette" class="gs-btn gs-btn-ghost">Generate matching colors</button>
+          <button id="btnDiscardDraft" class="gs-btn gs-btn-ghost">Discard draft</button>
         </div>
 
         <div id="builderPreview" class="gs-builder-preview"><strong>Your next idea starts here.</strong><p>A live preview of your text, surface and accent colors.</p><a href="#builderPreview">Explore a repository</a><button type="button" tabindex="-1">Primary action</button></div>
+        <div class="vn-contrast-row" id="builderContrast" role="status" aria-live="polite"></div>
+        <details class="readability-panel" open><summary>Readability checks</summary><p class="gs-sub">Checks use a 4.5:1 target. Transparent colors cannot be measured without a known surface.</p><div id="readabilityChecks"></div></details>
         <h2 class="gs-group-title">Surfaces</h2>
         <div class="gs-color-grid" id="colorGridSurfaces"></div>
 
@@ -116,6 +123,9 @@
       <section class="gs-tab" id="tab-typography">
         <h1 tabindex="-1">Typography</h1>
         <p class="gs-sub">Fine-tune reading comfort. Fonts must already be installed on your device.</p>
+        <p class="gs-card bilingual-preview"><span lang="fa" dir="rtl">این یک نمونه متن فارسی برای بررسی خوانایی است.</span><span lang="en" dir="ltr">Readable text, in every language.</span><code dir="ltr">const message = "سلام، world";</code></p>
+        <div class="vn-reading-preview" id="typographyPreview"><span class="vn-overline">READING PREVIEW</span><h2>Good design gets out of your way.</h2><p>A comfortable workspace makes room for your best ideas. Adjust your typography and see how it reads, right here.</p><code>const idea = await buildSomethingGreat();</code></div>
+        <div class="gs-builder-actions vn-reading-actions"><button class="gs-btn gs-btn-ghost" id="btnReadingComfort">Comfortable reading</button><button class="gs-btn gs-btn-ghost" id="btnResetTypography">Default typography</button></div>
         <div class="gs-form-grid">
           <label>Font Family
             <input type="text" id="fontFamily" class="gs-input" placeholder="e.g. 'Vazirmatn', sans-serif" />
@@ -146,8 +156,8 @@
       <!-- Components -->
       <section class="gs-tab" id="tab-components">
         <h1 tabindex="-1">Components</h1>
-        <p class="gs-sub">Choose which component styles and animations to apply. Page background, typography and your custom CSS are global.</p>
-        <div class="gs-component-list" id="componentList"></div>
+        <p class="gs-sub">Choose which component styles to apply. Page background, typography and your custom CSS are global.</p>
+        <p class="vn-component-summary" id="componentSummary"></p><label class="studio-component-search"><span class="sr-only">Search components</span><input id="componentSearch" class="gs-input" type="search" placeholder="Find a component…" /></label><div class="gs-component-list" id="componentList"></div><p id="componentEmpty" class="gs-sub" hidden>No components match this search.</p>
         <div class="gs-builder-actions" style="margin-top:16px;">
           <button class="gs-btn gs-btn-ghost" id="btnAllComponentsOn">Enable All</button>
           <button class="gs-btn gs-btn-ghost" id="btnAllComponentsOff">Disable All</button>
@@ -177,8 +187,9 @@
         <div class="gs-io-grid">
           <div class="gs-card gs-io-card">
             <h3>Export Theme</h3>
-            <p>Save the colors of the theme currently visible on GitHub.</p>
+            <p>Save the colors of your global theme.</p>
             <button class="gs-btn" id="btnExportTheme">Export Theme JSON</button>
+            <button class="gs-btn gs-btn-ghost" id="btnExportThemeCard">Download PNG card</button>
           </div>
           <div class="gs-card gs-io-card">
             <h3>Import Theme</h3>
@@ -201,6 +212,8 @@
       <!-- Settings -->
       <section class="gs-tab" id="tab-settings">
         <h1 tabindex="-1">Settings</h1>
+        <label class="interface-language">Interface language / زبان رابط <select id="interfaceLanguage" class="gs-input"><option value="en">English</option><option value="fa">فارسی</option></select></label>
+        <details class="history-panel" open><summary>Appearance history</summary><p class="gs-sub">The latest 20 appearance changes stay available after closing the panel. Restoring an entry also removes newer history entries.</p><div id="appearanceHistory"></div></details>
         <div class="gs-settings-list">
           <div class="gs-toggle-row">
             <span>Enable Extension</span>
@@ -209,14 +222,6 @@
           <div class="gs-toggle-row">
             <span>Enable Custom Theme</span>
             <button type="button" class="gs-switch" id="settingCustomTheme" role="switch" aria-checked="false" aria-label="Enable custom theme"></button>
-          </div>
-          <div class="gs-toggle-row">
-            <span>Animations — cinematic effects, glow and transitions</span>
-            <button type="button" class="gs-switch" id="settingAnimations" role="switch" aria-checked="false" aria-label="Enable animations"></button>
-          </div>
-          <div class="gs-toggle-row">
-            <span>🕸️ Web Swinger easter egg (profile page only)</span>
-            <button type="button" class="gs-switch" id="settingWebSwinger" role="switch" aria-checked="false" aria-label="Enable Web Swinger"></button>
           </div>
           <div class="gs-toggle-row">
             <span>Auto Dark Mode (follow system light/dark)</span>
@@ -236,20 +241,24 @@
 
       <!-- About -->
       <section class="gs-tab" id="tab-about">
-        <h1 tabindex="-1">About VELNAR</h1>
-        <p class="gs-sub">VELNAR makes GitHub feel like your space. Your settings stay in your browser: no accounts, analytics or tracking. Version 2.4.5.</p>
+        <h1 tabindex="-1">About NEXORA</h1>
+        <p class="brand-tagline">Beyond what exists.</p>
+        <p class="gs-sub">NEXORA makes GitHub feel like your space. Your settings stay in your browser: no accounts, analytics or tracking. Version 2.4.5.</p>
       </section>
     </main>
   </div>
 
   <script src="../utils/constants.js"></script>
   <script src="../themes/presets.js"></script>
-  <script src="../themes/character-art.js?v=depth-2"></script>
-  <script src="../themes/collection-art.js"></script><script src="../themes/scene-art.js?v=depth-2"></script>
   <script src="../utils/validator.js"></script>
   <script src="../utils/storage.js"></script>
   <script src="../utils/ui.js"></script>
+  <script src="../utils/catalog.js"></script>
+  <script src="../utils/palette.js"></script>
+  <script src="../utils/i18n.js"></script>
   <script src="../components/colorpicker.js"></script>
+  <script src="studio.js"></script>
+  <script src="theme-card.js"></script>
   <script src="options.js"></script>
 </body>
 </html>

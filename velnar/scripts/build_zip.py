@@ -1,7 +1,7 @@
 """
 Package kardane pooshe extension/ be ye zip amade baraye Chrome Web Store.
 Ejra: python3 scripts/build_zip.py
-Khoruji: dist/velnar-extension.zip
+Khoruji: dist/nexora-extension.zip
 """
 import os
 import json
@@ -10,7 +10,7 @@ import zipfile
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_DIR = os.path.join(ROOT, "extension")
 DIST_DIR = os.path.join(ROOT, "dist")
-OUT_ZIP = os.path.join(DIST_DIR, "velnar-extension.zip")
+OUT_ZIP = os.path.join(DIST_DIR, "nexora-extension.zip")
 
 
 def build():

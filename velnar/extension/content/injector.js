@@ -1,8 +1,8 @@
 // masuliyate in file: sakhtane style tag ha va zadane ru sahfe
 // hich vaght az eval ya innerHTML ba data khatarnak estefade nemikonim
-globalThis.VELNAR = globalThis.VELNAR || {};
+globalThis.NEXORA = globalThis.NEXORA || {};
 
-VELNAR.Injector = {
+NEXORA.Injector = {
   _getOrCreateTag(id) {
     let tag = document.getElementById(id);
     if (!tag) {
@@ -15,13 +15,13 @@ VELNAR.Injector = {
 
   // css variable haye theme ro ru :root minevisim
   applyThemeVars(colors, layout) {
-    const tag = this._getOrCreateTag(VELNAR.STYLE_TAG_ID);
+    const tag = this._getOrCreateTag(NEXORA.STYLE_TAG_ID);
     let css = ":root {\n";
-    for (const key in VELNAR.CSS_VAR_MAP) {
+    for (const key in NEXORA.CSS_VAR_MAP) {
       const value = colors[key];
-      if (value) css += `  ${VELNAR.CSS_VAR_MAP[key]}: ${value};\n`;
+      if (value) css += `  ${NEXORA.CSS_VAR_MAP[key]}: ${value};\n`;
     }
-    // baraye jelve haye animation (glow/gradient) be rgb khaam ham niaz darim, na faghat hex
+    // Contribution shades use RGB channels from the static accent colors.
     if (colors.accent && typeof gsHexToRgb === "function") {
       const rgb = gsHexToRgb(colors.accent);
       css += `  --gs-accent-rgb: ${rgb.r}, ${rgb.g}, ${rgb.b};\n`;
@@ -117,6 +117,7 @@ dialog::backdrop,
   // selector ha az tarkib class, data-attribute va aria estefade mikonan
   // ta hardche mishe be class haye shekananda vabaste nabashim
   _componentBlocks() {
+    const textButton = ':where(.btn-link, .btn-invisible, .Button--invisible, .pinned-items-setting-link, [data-variant="invisible"], .p-0.border-0, .tmp-p-0.border-0)';
     return {
       navbar: `
 .AppHeader, div[data-testid="global-navigation"], .Header, .AppHeader-globalBar, .AppHeader-context, body > header {
@@ -156,28 +157,59 @@ header.AppHeader summary, .AppHeader-actions summary {
 }`,
 
       repoCards: `
-.Box, .Box-row, [data-testid="results-list"] > div, .col-12.d-flex.flex-justify-between, .source-list,
+.Box, [data-testid="results-list"] > div,
 [data-testid="feed-item"], [data-testid="feed-card"] {
   background-color: var(--gs-repo-bg) !important;
   border-color: var(--gs-border) !important;
   border-radius: var(--gs-radius) !important;
 }
-.Box:hover { border-color: var(--gs-accent) !important; }
-.Box-row:hover { background-color: var(--gs-hover-bg) !important; }`,
+/* A GitHub utility-class row is not necessarily a card. Only inset repository
+   list entries inside the profile's repository list, keeping native controls. */
+#user-repositories-list > ul > li {
+  box-sizing: border-box;
+  min-width: 0;
+  background-color: var(--gs-repo-bg) !important;
+  border: 1px solid var(--gs-border) !important;
+  border-radius: var(--gs-radius) !important;
+  padding-inline: clamp(12px, 2vw, 20px) !important;
+  margin-block: 0 12px !important;
+}
+#user-repositories-list > ul > li [itemprop~="name"] { overflow-wrap: anywhere; }
+/* Rows in a shared Box remain joined; round only the container's outer corners. */
+.Box > .Box-row { border-color: var(--gs-border) !important; border-radius: 0 !important; }
+.Box > .Box-row:first-child { border-start-start-radius: var(--gs-radius) !important; border-start-end-radius: var(--gs-radius) !important; }
+.Box > .Box-row:last-child { border-end-start-radius: var(--gs-radius) !important; border-end-end-radius: var(--gs-radius) !important; }
+/* The profile overview shares an edge with the graph above it. */
+.js-yearly-contributions .graph-before-activity-overview { border-radius: var(--gs-radius); }
+.Box.activity-overview-box {
+  border-start-start-radius: 0 !important;
+  border-start-end-radius: 0 !important;
+}
+.Box:not(:where(.activity-overview-box)):hover { border-color: var(--gs-accent) !important; }
+/* Primer's header reaches the outer border of its Box. Match that curve. */
+.Box > .Box-header:first-child {
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+}
+.Box > .Box-footer:last-child {
+  border-end-start-radius: inherit;
+  border-end-end-radius: inherit;
+}
+.Box > .Box-row:hover { background-color: var(--gs-hover-bg) !important; }`,
 
       buttons: `
 /* halate defaulte dokme ha: sobresh be surface theme, na ye block tokh rangi.
    faghat dokme haye "primary" (asli/submit) rang e accent solid migiran, in shabihe
    tarahi haye vaghei hast: rang faghat baraye action asli estefade beshe */
-.btn, .Button, [class*="ButtonBase"] {
+:is(.btn, .Button, [class*="ButtonBase"]):not(${textButton}) {
   background-color: var(--gs-bg-tertiary) !important;
   color: var(--gs-text-primary) !important;
   border: 1px solid var(--gs-border) !important;
   border-radius: var(--gs-radius) !important;
   box-shadow: none;
 }
-.btn:hover, .Button:hover { background-color: var(--gs-hover-bg) !important; border-color: var(--gs-accent) !important; }
-.btn:active, .Button:active { background-color: var(--gs-active-bg) !important; }
+:is(.btn, .Button):not(${textButton}):hover { background-color: var(--gs-hover-bg) !important; border-color: var(--gs-accent) !important; }
+:is(.btn, .Button):not(${textButton}):active { background-color: var(--gs-active-bg) !important; }
 
 .btn-primary, .Button--primary, [data-variant="primary"] {
   background-color: var(--gs-button) !important;
@@ -371,11 +403,11 @@ pre, code, .highlight, .blob-code, .blob-code-inner, .react-code-text, .CodeMirr
   },
 
   applyComponents(overrides) {
-    const tag = this._getOrCreateTag(VELNAR.COMPONENTS_TAG_ID);
+    const tag = this._getOrCreateTag(NEXORA.COMPONENTS_TAG_ID);
     const blocks = this._componentBlocks();
     const componentTokens = this._componentTokens();
     let css = "";
-    VELNAR.COMPONENTS.forEach((c) => {
+    NEXORA.COMPONENTS.forEach((c) => {
       if (!overrides || overrides[c.id] !== false) {
         const tokens = componentTokens[c.id];
         if (tokens) css += this._primerDeclarations(tokens);
@@ -386,38 +418,8 @@ pre, code, .highlight, .blob-code, .blob-code-inner, .react-code-text, .CodeMirr
     if (tag.textContent !== css) tag.textContent = css;
   },
 
-  // One composited sweep per graph replaces hundreds of cell paint animations.
-  applyAnimations(enabled, overrides, rgbCycle) {
-    const tag = this._getOrCreateTag(VELNAR.ANIMATIONS_TAG_ID);
-    if (!enabled) { if (tag.textContent) tag.textContent = ""; return; }
-    const on = id => !overrides || overrides[id] !== false;
-    let css = `@keyframes velnar-shimmer-sweep {
-      0%,15% { transform:translateX(-150%) skewX(-12deg);opacity:0; }
-      25%,65% { opacity:1; }
-      85%,100% { transform:translateX(450%) skewX(-12deg);opacity:0; }
-    }
-    @keyframes velnar-rgb-hue { to { filter:hue-rotate(360deg); } }
-    @media (prefers-reduced-motion:no-preference) {`;
-    if (on("navbar")) css += `
-      header.AppHeader,.AppHeader-globalBar { background-image:linear-gradient(120deg,var(--gs-navbar-bg),rgba(var(--gs-accent-rgb),.12),var(--gs-navbar-bg)) !important; }`;
-    if (on("buttons")) css += `
-      .btn,.Button { transition:background-color .15s ease,box-shadow .15s ease; }
-      .btn-primary:hover,.Button--primary:hover,[data-variant="primary"]:hover { box-shadow:0 0 14px rgba(var(--gs-accent2-rgb),.4); }`;
-    if (on("contributionGraph")) css += `
-      .ContributionCalendar-day { transition:transform .15s ease;transform-origin:center; }
-      .ContributionCalendar-day:hover { transform:scale(1.3);position:relative;z-index:1; }
-      .js-calendar-graph { position:relative;overflow:hidden; }
-      .js-calendar-graph::after {
-        content:"";position:absolute;inset-block:0;left:0;width:30%;pointer-events:none;
-        background:linear-gradient(100deg,transparent,rgba(var(--gs-accent-rgb),.12),rgba(var(--gs-accent2-rgb),.12),transparent);
-        animation:velnar-shimmer-sweep 10s ease-in-out infinite${rgbCycle ? ",velnar-rgb-hue 6s linear infinite" : ""};
-      }`;
-    css += "}";
-    if (tag.textContent !== css) tag.textContent = css;
-  },
-
   applyTypography(typography) {
-    const tag = this._getOrCreateTag(VELNAR.TYPOGRAPHY_TAG_ID);
+    const tag = this._getOrCreateTag(NEXORA.TYPOGRAPHY_TAG_ID);
     if (!typography) {
       tag.textContent = "";
       return;
@@ -437,100 +439,65 @@ pre, code, .highlight, .blob-code, .blob-code-inner, .react-code-text, .CodeMirr
     if (tag.textContent !== css) tag.textContent = css;
   },
 
+  applyReviewFocus() {
+    const tag = this._getOrCreateTag(NEXORA.REVIEW_FOCUS_TAG_ID);
+    const customCss = document.getElementById(NEXORA.CUSTOM_CSS_TAG_ID);
+    if (customCss?.previousElementSibling !== tag) customCss?.before(tag);
+    const tree = ':is(file-tree, #diff_file_tree, #diff-file-tree, [data-testid="diff-file-tree"], [role="tree"][aria-label="File Tree" i])';
+    tag.textContent = `
+:root, [data-color-mode], [data-light-theme], [data-dark-theme] {
+  --nexora-diff-added: color-mix(in srgb, var(--gs-success) 30%, var(--gs-code-bg));
+  --nexora-diff-removed: color-mix(in srgb, var(--gs-error) 30%, var(--gs-code-bg));
+  --diffBlob-addition-bgColor-line: var(--nexora-diff-added) !important;
+  --diffBlob-deletion-bgColor-line: var(--nexora-diff-removed) !important;
+  --diffBlob-addition-fgColor-text: var(--gs-code-text) !important;
+  --diffBlob-deletion-fgColor-text: var(--gs-code-text) !important;
+  --color-diff-blob-addition-line-bg: var(--nexora-diff-added) !important;
+  --color-diff-blob-deletion-line-bg: var(--nexora-diff-removed) !important;
+}
+:is(main, #repo-content-pjax-container) :is(.container-xl, .container-lg),
+main:is(.container-xl, .container-lg) { max-width: none !important; }
+[data-target~="diff-layout.layoutContainer"] {
+  --Layout-sidebar-width: 0px !important;
+  --Layout-gutter: 0px !important;
+}
+[data-target~="diff-layout.sidebarContainer"],
+:is(.Layout-sidebar, aside, [class*="PageLayout-Pane"]):has(${tree}),
+${tree} { display: none !important; }
+[data-target~="diff-layout.mainContainer"], .Layout-main:has(:is(#files, .diff-table, [data-testid="virtualized-diffs-list"])) {
+  min-width: 0;
+  width: 100% !important;
+}
+:is(.blob-code-addition, [data-line-type="addition"], [data-line-type="ADDITION"]) {
+  background-color: var(--nexora-diff-added) !important;
+  box-shadow: inset 3px 0 var(--gs-success);
+}
+:is(.blob-code-deletion, [data-line-type="deletion"], [data-line-type="DELETION"]) {
+  background-color: var(--nexora-diff-removed) !important;
+  box-shadow: inset 3px 0 var(--gs-error);
+}`;
+  },
+
   applyCustomCss(cssText, enabled) {
-    const tag = this._getOrCreateTag(VELNAR.CUSTOM_CSS_TAG_ID);
+    const tag = this._getOrCreateTag(NEXORA.CUSTOM_CSS_TAG_ID);
     if (!enabled || !cssText) {
       tag.textContent = "";
       return;
     }
-    const check = VELNAR.Validator.validateCss(cssText);
+    const check = NEXORA.Validator.validateCss(cssText);
     if (!check.valid) {
       tag.textContent = "";
       return;
     }
-    tag.textContent = VELNAR.Validator.sanitize(cssText);
-  },
-
-  // "Web Swinger" - ye easter egg e generic (na Spider-Man e ashkhas, chun oon copyright dare).
-  // ye silhouette e ghahreman e maskdar mibinim ke faghat vaghti safheye profile hastim,
-  // ba rang e accent khode theme az in var oon var e safhe sowing mikone
-  applyWebSwinger(enabled, colors) {
-    const isProfilePage = !!document.querySelector(
-      '.js-profile-editable-area, .vcard-names, [itemtype="http://schema.org/Person"]'
-    );
-    const styleTag = this._getOrCreateTag(VELNAR.WEB_SWINGER_STYLE_ID);
-    let el = document.getElementById(VELNAR.WEB_SWINGER_ELEMENT_ID);
-
-    if (!enabled || !isProfilePage || !document.body || document.hidden) {
-      styleTag.textContent = "";
-      if (el) el.remove();
-      return;
-    }
-    const signature = JSON.stringify([colors.accent, colors.accentSecondary]);
-    if (el?.dataset.signature === signature && styleTag.textContent) return;
-
-    const accent = (colors && colors.accent) || "#00c2d7";
-    const accent2 = (colors && colors.accentSecondary) || accent;
-
-    // silhouette e sade: khat e tar (web), sar, badan, dast o pa dar halate sowing
-    // amdan abstract va stylized negah dashte shode, na kopi az design e khas
-    const svg =
-      `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 96'>` +
-      `<line x1='4' y1='0' x2='26' y2='24' stroke='${accent2}' stroke-width='1.4' opacity='0.75'/>` +
-      `<circle cx='27' cy='24' r='9' fill='${accent}'/>` +
-      `<path d='M22 22 Q25 18 29 22 Q25 25 22 22 Z' fill='#fff' opacity='0.92'/>` +
-      `<path d='M20 32 Q27 27 36 32 L34 58 Q27 63 21 58 Z' fill='${accent}'/>` +
-      `<path d='M20 33 L7 12' stroke='${accent}' stroke-width='6' stroke-linecap='round'/>` +
-      `<path d='M36 35 L48 50' stroke='${accent}' stroke-width='6' stroke-linecap='round'/>` +
-      `<path d='M23 58 L15 82' stroke='${accent}' stroke-width='7' stroke-linecap='round'/>` +
-      `<path d='M33 58 L45 76' stroke='${accent}' stroke-width='7' stroke-linecap='round'/>` +
-      `</svg>`;
-    const dataUri = "data:image/svg+xml," + encodeURIComponent(svg);
-
-    if (!el) {
-      el = document.createElement("div");
-      el.id = VELNAR.WEB_SWINGER_ELEMENT_ID;
-      document.body.appendChild(el);
-    }
-    el.dataset.signature = signature;
-    el.style.backgroundImage = `url("${dataUri}")`;
-
-    styleTag.textContent = `
-#${VELNAR.WEB_SWINGER_ELEMENT_ID} {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 56px;
-  height: 84px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  pointer-events: none;
-  z-index: 999999;
-  opacity: 0;
-}
-@media (prefers-reduced-motion: no-preference) {
-  #${VELNAR.WEB_SWINGER_ELEMENT_ID} {
-    animation: velnar-web-swing 16s ease-in-out infinite;
-  }
-}
-@keyframes velnar-web-swing {
-  0%   { opacity: 0; transform: translate(-90px,20vh) rotate(-20deg); }
-  2%   { opacity: 1; }
-  10%  { transform: translate(25vw,34vh) rotate(20deg); }
-  18%  { transform: translate(50vw,12vh) rotate(-24deg); }
-  26%  { transform: translate(75vw,32vh) rotate(18deg); }
-  33%  { opacity: 1; transform: translate(106vw,20vh) rotate(-8deg); }
-  35%  { opacity: 0; }
-  100% { opacity: 0; transform: translate(106vw,20vh) rotate(-8deg); }
-}`;
+    tag.textContent = NEXORA.Validator.sanitize(cssText);
   },
 
   removeAll() {
-    [VELNAR.STYLE_TAG_ID, VELNAR.CUSTOM_CSS_TAG_ID, VELNAR.TYPOGRAPHY_TAG_ID, VELNAR.COMPONENTS_TAG_ID, VELNAR.ANIMATIONS_TAG_ID, VELNAR.WEB_SWINGER_STYLE_ID].forEach((id) => {
+    [NEXORA.STYLE_TAG_ID, NEXORA.CUSTOM_CSS_TAG_ID, NEXORA.TYPOGRAPHY_TAG_ID, NEXORA.COMPONENTS_TAG_ID, NEXORA.REVIEW_FOCUS_TAG_ID, NEXORA.ANIMATIONS_TAG_ID, NEXORA.WEB_SWINGER_STYLE_ID].forEach((id) => {
       const tag = document.getElementById(id);
-      if (tag) tag.textContent = "";
+      if (tag) tag.remove();
     });
-    const swinger = document.getElementById(VELNAR.WEB_SWINGER_ELEMENT_ID);
+    const swinger = document.getElementById(NEXORA.WEB_SWINGER_ELEMENT_ID);
     if (swinger) swinger.remove();
   }
 };

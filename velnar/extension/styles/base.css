@@ -32,10 +32,10 @@ input, select, textarea {
   color: #04141a;
   font-weight: 600;
   font-size: 13px;
-  transition: transform 0.12s ease, opacity 0.12s ease;
+
 }
 .gs-btn:hover { opacity: 0.9; }
-.gs-btn:active { transform: scale(0.97); }
+
 
 .gs-btn-ghost {
   background: transparent;
@@ -49,7 +49,7 @@ input, select, textarea {
   height: 22px;
   border-radius: 999px;
   background: var(--ui-border);
-  transition: background 0.15s ease;
+
   display: inline-block;
 }
 .gs-switch::after {
@@ -61,11 +61,11 @@ input, select, textarea {
   height: 18px;
   border-radius: 50%;
   background: #fff;
-  transition: transform 0.15s ease;
+
 }
 .gs-switch.is-on { background: var(--ui-accent); }
 .gs-switch.is-on::after { transform: translateX(18px); }
-/* Shared accessible controls and VELNAR brand details. */
+/* Shared accessible controls and NEXORA brand details. */
 [hidden] { display: none !important; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--ui-accent); outline-offset: 4px; }
@@ -73,7 +73,21 @@ button:disabled, select:disabled { opacity: .45; cursor: not-allowed; }
 .gs-switch { flex-shrink: 0; padding: 0; cursor: pointer; border: 1px solid #ffffff15; }
 .gs-status { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); max-width: min(560px, calc(100vw - 28px)); width: max-content; border: 1px solid #62dfaa50; background: #10251f; color: #baf6de; padding: 12px 18px; border-radius: 10px; z-index: 100; font-size: 13px; box-shadow: 0 10px 40px #0008; }
 .gs-status.is-error { border-color: #ff8c9860; color: #ffc1c8; background: #32171d; }
-.gs-logo-img { border-radius: 0 !important; animation: none !important; filter: none !important; width: 38px !important; height: 38px !important; }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-}
+.gs-logo-img { border-radius: 0 !important;  filter: none !important; width: 38px !important; height: 38px !important; }
+/* Workspace studio: quiet surfaces, clear hierarchy and compact controls. */
+:root { color-scheme: dark; }
+.vn-overline { display:block; color:var(--ui-text-secondary); font-size:10px; font-weight:650; letter-spacing:.14em; }
+.vn-filter-bar { display:flex; flex-wrap:wrap; gap:6px; }
+.vn-filter-bar button { padding:8px 13px; border:1px solid transparent; border-radius:7px; color:var(--ui-text-secondary); background:transparent; font-size:12px; white-space:nowrap; }
+.vn-filter-bar button:hover { background:#ffffff08; color:var(--ui-text-primary); }
+.vn-filter-bar button[aria-pressed="true"] { background:var(--ui-accent-soft); border-color:#7c9dff45; color:#b4c7ff; }
+.vn-palette-dots { display:flex; }
+.vn-palette-dots i { width:18px; height:18px; border:2px solid #ffffff40; border-radius:50%; margin-right:-4px; }
+/* Direction belongs to extension chrome; samples of source code always stay LTR. */
+html[lang="fa"] { --ui-font: "Vazirmatn", "Tahoma", sans-serif; }
+[dir="rtl"] .gs-nav-item, [dir="rtl"] .gs-input { text-align:start; }
+[dir="rtl"] .gs-sidebar { border-right:0; border-left:1px solid var(--ui-border); }
+[dir="rtl"] .vn-overline { letter-spacing:normal; }
+pre, code, .sample-code, .sample-diff, .gs-color-hex, #customCssInput { direction:ltr; text-align:left; unicode-bidi:isolate; }
+.bilingual-preview { display:grid; gap:12px; padding:18px; }
+.interface-language { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-block:16px 24px; }

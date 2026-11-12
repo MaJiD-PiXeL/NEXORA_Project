@@ -1,8 +1,8 @@
-globalThis.VELNAR = globalThis.VELNAR || {};
+globalThis.NEXORA = globalThis.NEXORA || {};
 
 // Shared, scalable character art for the grid actors and cinematic illustrations.
 // Fine detail lives in the vectors; animation still moves just the outer actor.
-VELNAR.CharacterArt = (() => {
+NEXORA.CharacterArt = (() => {
   let serial=0;
   const names={"spider-man":"Spider-Man","the-last-of-us":"Ellie","red-dead":"Arthur Morgan","rick-and-morty":"Rick and Morty","iron-man":"Iron Man"};
   const materialProfiles={
@@ -146,13 +146,13 @@ VELNAR.CharacterArt = (() => {
   return {
     names,
     svg(id) {
-      const drawing=art[id] || VELNAR.CollectionArt?.characters[id];
+      const drawing=art[id] || NEXORA.CollectionArt?.characters[id];
       if(!drawing)return '';
       const prefix=`vn-character-${++serial}`;
       const colors={red:['#ff5a59','#c61839'],blue:['#278ed0','#113f83'],skin:['#e5c49e','#b98c6c'],hair:['#9b6544','#50332d'],denim:['#779394','#364d60'],leather:['#6e5340','#302820'],gold:['#ffe19b','#b87837'],metal:['#ed5a4e','#8c1936']};
       const defs=Object.entries(colors).map(([key,[a,b]])=>`<linearGradient id="${prefix}-${key}" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`).join('');
       const [grain,shine]=materialProfiles[id]||[.82,14];
-      const theme=VELNAR.getThemeById(id);
+      const theme=NEXORA.getThemeById(id);
       const light=theme?.colors?.accentSecondary||"#d9e7ff";
       const texture=`<filter id="${prefix}-finish" x="-22%" y="-18%" width="144%" height="145%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="2.4" result="blur"/><feOffset in="blur" dy="3" result="offset"/><feFlood flood-color="#02050b" flood-opacity=".72" result="shade"/><feComposite in="shade" in2="offset" operator="in" result="shadow"/><feTurbulence type="fractalNoise" baseFrequency="${grain}" numOctaves="2" seed="${id.length*17}" result="noise"/><feColorMatrix in="noise" type="saturate" values="0" result="mono"/><feComponentTransfer in="mono" result="grain"><feFuncA type="table" tableValues="0 .13"/></feComponentTransfer><feComposite in="grain" in2="SourceAlpha" operator="in" result="surface"/><feBlend in="SourceGraphic" in2="surface" mode="soft-light" result="textured"/><feSpecularLighting in="SourceAlpha" surfaceScale="1.35" specularConstant=".25" specularExponent="${shine}" lighting-color="${light}" result="glint"><feDistantLight azimuth="225" elevation="52"/></feSpecularLighting><feComposite in="glint" in2="SourceAlpha" operator="in" result="highlight"/><feBlend in="textured" in2="highlight" mode="screen" result="lit"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="lit"/></feMerge></filter>`;
       const rendered=drawing.replace(/^([\s\S]*?<g\s+stroke="#[0-9a-f]{6}"\s+stroke-width=")[0-9.]+/i,(_,head)=>`${head}${contourWidths[id]||1}`).replace(/@([a-z]+)@/g,(_,key)=>`${prefix}-${key}`);

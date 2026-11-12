@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VELNAR</title>
+  <title>NEXORA — GitHub Studio</title>
+  <link rel="icon" type="image/svg+xml" href="../icons/nexora-mark.svg" />
   <link rel="stylesheet" href="../styles/variables.css" />
   <link rel="stylesheet" href="../styles/base.css" />
   <link rel="stylesheet" href="popup.css" />
@@ -13,8 +14,8 @@
   <div class="gs-popup">
     <div class="gs-popup-header">
       <div class="gs-logo">
-        <img class="gs-logo-img" src="../icons/velnar-mark.svg" alt="VELNAR" />
-        <span>VELNAR<small id="extensionState">Active on GitHub</small></span>
+        <img class="gs-logo-img" src="../icons/nexora-mark.svg" alt="" />
+        <span>NEXORA<small id="extensionState">Active on GitHub</small></span>
       </div>
       <button type="button" class="gs-switch" id="enabledSwitch" role="switch" aria-checked="false" aria-label="Enable extension"></button>
     </div>
@@ -23,15 +24,33 @@
       System appearance is on. Choosing a theme switches to manual mode. <button id="btnDisableAutoDark" class="gs-banner-link">turn it off</button>.
     </div>
 
+    <div class="vn-popup-current" id="popupCurrent"><span class="vn-overline">CURRENT WORKSPACE</span><strong id="popupThemeName"></strong><div id="popupPalette" class="vn-palette-dots" aria-hidden="true"></div><button id="btnUndoTheme" disabled>Undo theme</button></div>
+    <section id="workspaceControls" class="vn-workspace-controls" aria-label="GitHub tab controls" hidden>
+      <div class="vn-workspace-actions">
+        <button type="button" class="gs-btn gs-btn-ghost" id="btnLivePreview" aria-pressed="false">Preview on this page</button>
+        <button type="button" class="gs-btn gs-btn-ghost" id="btnReviewFocus" aria-pressed="false" title="Alt+Shift+F" hidden>Review focus</button>
+      </div>
+      <div id="repositoryStatus" class="vn-workspace-actions" hidden>
+        <bdi id="repositoryName" data-i18n-skip></bdi>
+        <button type="button" class="gs-btn gs-btn-ghost" id="btnClearRepository">Use global theme</button>
+      </div>
+      <div id="previewActions" hidden>
+        <p id="previewHint" aria-live="polite"></p>
+        <div class="vn-workspace-actions">
+          <button type="button" class="gs-btn" id="btnKeepPreview">Apply globally</button>
+          <button type="button" class="gs-btn gs-btn-ghost" id="btnKeepRepository" hidden>Only for this repo</button>
+        </div>
+      </div>
+    </section>
     <div class="gs-popup-section">
       <label class="sr-only" for="themeSearch">Search themes</label><input id="themeSearch" class="gs-input gs-popup-search" type="search" placeholder="Find your theme…" />
-      <div class="gs-popup-label">Your palette <span id="themeCount"></span></div>
-      <div class="gs-theme-grid" id="themeGrid"></div><p id="themeEmpty" hidden>No themes found.</p>
+      <div class="vn-filter-bar" id="popupFilters" role="group" aria-label="Theme collections"><button data-category="all" aria-pressed="true">All themes</button><button data-category="favorites" aria-pressed="false">★ Saved</button><button data-category="cinematic" aria-pressed="false">Cinematic</button></div>
+      <div class="gs-popup-label">Theme library <span id="themeCount"></span></div>
+      <div class="gs-theme-grid" id="themeGrid"></div><p id="themeEmpty" class="vn-popup-empty" hidden>No themes here yet. Try another search or save a favorite.</p>
     </div>
 
-    <div class="gs-popup-section gs-row-2">
-      <button class="gs-btn gs-btn-ghost" id="btnRandom">🎲 Random</button>
-      <button class="gs-btn gs-btn-ghost" id="btnAnimations">✨ Animations</button>
+    <div class="gs-popup-section gs-popup-actions">
+      <button class="gs-btn gs-btn-ghost" id="btnRandom">↝ Shuffle</button>
     </div>
 
     <div class="gs-popup-footer">
@@ -39,17 +58,17 @@
       <button class="gs-btn" id="btnSettings">Open Settings</button>
     </div>
 
-    <a class="vn-preview-link" href="../preview/preview.html" target="_blank">Explore the 15 cinematic themes ↗</a>
+    <a class="vn-preview-link" href="../preview/preview.html" target="_blank">Open interactive collection ↗</a>
     <div class="gs-popup-hint">Ctrl+Shift+G to toggle · Alt+Shift+R for random</div>
   </div>
 
   <script src="../utils/constants.js"></script>
   <script src="../themes/presets.js"></script>
-  <script src="../themes/character-art.js?v=depth-2"></script>
-  <script src="../themes/collection-art.js"></script><script src="../themes/scene-art.js?v=depth-2"></script>
   <script src="../utils/validator.js"></script>
   <script src="../utils/storage.js"></script>
   <script src="../utils/ui.js"></script>
+  <script src="../utils/catalog.js"></script>
+  <script src="../utils/i18n.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
