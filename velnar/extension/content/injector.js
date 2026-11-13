@@ -117,7 +117,8 @@ dialog::backdrop,
   // selector ha az tarkib class, data-attribute va aria estefade mikonan
   // ta hardche mishe be class haye shekananda vabaste nabashim
   _componentBlocks() {
-    const textButton = ':where(.btn-link, .btn-invisible, .Button--invisible, .pinned-items-setting-link, [data-variant="invisible"], .p-0.border-0, .tmp-p-0.border-0)';
+    const textButton = `:where(.btn-link, .btn-invisible, .Button--link, .Button--invisible,
+      .pinned-items-setting-link, [data-variant="link"], [data-variant="invisible"], .p-0.border-0, .tmp-p-0.border-0)`;
     return {
       navbar: `
 .AppHeader, div[data-testid="global-navigation"], .Header, .AppHeader-globalBar, .AppHeader-context, body > header {
@@ -165,25 +166,63 @@ header.AppHeader summary, .AppHeader-actions summary {
 }
 /* A GitHub utility-class row is not necessarily a card. Only inset repository
    list entries inside the profile's repository list, keeping native controls. */
+.border-bottom:has(+ #user-repositories-list > ul > li) { border-bottom-width: 0 !important; }
 #user-repositories-list > ul > li {
   box-sizing: border-box;
   min-width: 0;
   background-color: var(--gs-repo-bg) !important;
   border: 1px solid var(--gs-border) !important;
   border-radius: var(--gs-radius) !important;
+  padding-block: clamp(14px, 1.6vw, 20px) !important;
   padding-inline: clamp(12px, 2vw, 20px) !important;
   margin-block: 0 12px !important;
 }
+#user-repositories-list > ul > li > .col-10 { flex: 1; min-width: 0; }
+#user-repositories-list > ul > li > .col-2:not(:has(> :not([hidden], .hide-xs.hide-sm.hide-md.hide-lg))) {
+  display: none !important;
+}
 #user-repositories-list > ul > li [itemprop~="name"] { overflow-wrap: anywhere; }
+.js-pinned-items-reorder-container > ol:has(.pinned-item-list-item) {
+  row-gap: clamp(10px, 1.2vw, 16px);
+  margin-block-end: 0 !important;
+}
+.js-pinned-items-reorder-container > ol > li:has(.pinned-item-list-item) { margin-block-end: 0 !important; }
+.js-pinned-items-reorder-container .pinned-item-list-item { padding: clamp(12px, 1.4vw, 16px) !important; }
 /* Rows in a shared Box remain joined; round only the container's outer corners. */
 .Box > .Box-row { border-color: var(--gs-border) !important; border-radius: 0 !important; }
 .Box > .Box-row:first-child { border-start-start-radius: var(--gs-radius) !important; border-start-end-radius: var(--gs-radius) !important; }
 .Box > .Box-row:last-child { border-end-start-radius: var(--gs-radius) !important; border-end-end-radius: var(--gs-radius) !important; }
 /* The profile overview shares an edge with the graph above it. */
+.js-yearly-contributions {
+  --nexora-contribution-inset: clamp(12px, 2vw, 16px);
+  --nexora-calendar-gutter: 8px;
+}
 .js-yearly-contributions .graph-before-activity-overview { border-radius: var(--gs-radius); }
+.graph-before-activity-overview > .js-calendar-graph { margin-inline: var(--nexora-calendar-gutter) !important; }
+.graph-before-activity-overview > .js-calendar-graph > .width-full:has(> .float-left + .float-right) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  padding-inline: calc(var(--nexora-contribution-inset) - var(--nexora-calendar-gutter)) !important;
+}
+.graph-before-activity-overview > .js-calendar-graph > .width-full > .float-right { margin-inline-start: auto; }
 .Box.activity-overview-box {
   border-start-start-radius: 0 !important;
   border-start-end-radius: 0 !important;
+  padding-inline: var(--nexora-contribution-inset, 16px) !important;
+  margin-block-end: 24px !important;
+}
+@media (max-width: 767px) {
+  .js-yearly-contributions { --nexora-calendar-gutter: var(--nexora-contribution-inset); }
+}
+@media (max-width: 1011px) {
+  .activity-overview-box .col-6:has(> .js-activity-overview-graph-container) {
+    /* GitHub draws this SVG without a viewBox. Let it use the full card width. */
+    width: calc(100% + 2 * var(--nexora-contribution-inset, 12px));
+    align-self: center;
+  }
+  .activity-overview-box .js-activity-overview-graph-container { overflow-x: auto; }
 }
 .Box:not(:where(.activity-overview-box)):hover { border-color: var(--gs-accent) !important; }
 /* Primer's header reaches the outer border of its Box. Match that curve. */
