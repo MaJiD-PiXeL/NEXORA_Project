@@ -82,6 +82,8 @@
 
         <p id="draftStatus" class="gs-sub" role="status" aria-live="polite"></p>
         <div class="builder-generator gs-card">
+          <label>Built-in palette <select id="builderPreset" class="gs-input"><option value="">Choose a palette</option></select></label>
+          <button id="btnUseBuilderPreset" class="gs-btn gs-btn-ghost" disabled>Use palette colors</button>
           <label>Seed color <input id="paletteSeed" type="color" value="#7c9dff" /></label>
           <label>Palette appearance <select id="paletteMode" class="gs-input"><option value="dark">Dark</option><option value="light">Light</option></select></label>
           <button id="btnGeneratePalette" class="gs-btn gs-btn-ghost">Generate matching colors</button>
@@ -124,7 +126,9 @@
         <h1 tabindex="-1">Typography</h1>
         <p class="gs-sub">Fine-tune reading comfort. Fonts must already be installed on your device.</p>
         <p class="gs-card bilingual-preview"><span lang="fa" dir="rtl">این یک نمونه متن فارسی برای بررسی خوانایی است.</span><span lang="en" dir="ltr">Readable text, in every language.</span><code dir="ltr">const message = "سلام، world";</code></p>
-        <div class="vn-reading-preview" id="typographyPreview"><span class="vn-overline">READING PREVIEW</span><h2>Good design gets out of your way.</h2><p>A comfortable workspace makes room for your best ideas. Adjust your typography and see how it reads, right here.</p><code>const idea = await buildSomethingGreat();</code></div>
+        <div class="vn-reading-preview" id="typographyPreview"><span class="vn-overline">READING PREVIEW</span><h2>Good design gets out of your way.</h2><p>A comfortable workspace makes room for your best ideas. Adjust your typography and see how it reads, right here.</p><pre dir="ltr"><code>async function build() {
+&#9;return await buildSomethingGreat();
+}</code></pre></div>
         <div class="gs-builder-actions vn-reading-actions"><button class="gs-btn gs-btn-ghost" id="btnReadingComfort">Comfortable reading</button><button class="gs-btn gs-btn-ghost" id="btnResetTypography">Default typography</button></div>
         <div class="gs-form-grid">
           <label>Font Family
@@ -132,6 +136,14 @@
           </label>
           <label>Code Font
             <input type="text" id="codeFont" class="gs-input" placeholder="e.g. 'Fira Code', monospace" />
+          </label>
+          <label>Code tab width
+            <select id="codeTabSize" class="gs-input">
+              <option value="0">GitHub default</option>
+              <option value="2">2 spaces</option>
+              <option value="4">4 spaces</option>
+              <option value="8">8 spaces</option>
+            </select>
           </label>
           <label>Font Size (px)
             <input type="range" id="fontSize" min="11" max="20" step="1" />
@@ -243,7 +255,7 @@
       <section class="gs-tab" id="tab-about">
         <h1 tabindex="-1">About NEXORA</h1>
         <p class="brand-tagline">Beyond what exists.</p>
-        <p class="gs-sub">NEXORA makes GitHub feel like your space. Your settings stay in your browser: no accounts, analytics or tracking. Version 2.4.5.</p>
+        <p class="gs-sub">NEXORA makes GitHub feel like your space. Your settings stay in your browser: no accounts, analytics or tracking. Version 2.5.0.</p>
       </section>
     </main>
   </div>

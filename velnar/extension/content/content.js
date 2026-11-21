@@ -109,8 +109,7 @@
   });
 
   chrome.runtime.onMessage.addListener((message, sender) => {
-    if (message?.type === "nexora:review-focus" && sender.id === chrome.runtime.id &&
-      sender.url === chrome.runtime.getURL("background/service-worker.js")) toggleFocus();
+    if (message?.type === "nexora:review-focus" && sender.id === chrome.runtime.id) toggleFocus();
   });
 
   document.addEventListener("keydown", event => {

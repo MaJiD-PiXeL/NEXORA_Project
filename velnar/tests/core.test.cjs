@@ -44,7 +44,7 @@ function harness(initial = {}) {
 
 test("manifest files exist and service worker starts without window", () => {
   const manifest = JSON.parse(source("manifest.json"));
-  assert.equal(manifest.version, "2.4.5"); assert.ok(manifest.description.length <= 132);
+  assert.equal(manifest.version, require("../package.json").version); assert.ok(manifest.description.length <= 132);
   for (const file of [...manifest.content_scripts[0].js, ...Object.values(manifest.icons), manifest.background.service_worker, manifest.options_page, manifest.action.default_popup]) assert.ok(fs.existsSync(path.join(root, file)), file);
   const h = harness(); assert.equal(h.messages.length, 1); assert.equal(h.commands.length, 1); assert.equal(h.installs.length, 1);
 });
@@ -54,6 +54,19 @@ test("writes from separate pages preserve all changes", async () => {
   await Promise.all([a.set({ activeThemeId: "light" }), b.set({ autoDarkMode: true }), a.set({ layout: { borderRadius: 15 } }), b.set({ typography: { fontSize: 17 } })]);
   const actual = await a.get();
   assert.equal(actual.activeThemeId, "light"); assert.equal(actual.autoDarkMode, true); assert.equal(actual.layout.borderRadius, 15); assert.equal(actual.typography.fontSize, 17);
+});
+
+test("code tab width defaults for old settings, validates and survives history restoration", async () => {
+  const storage = harness({ nexora_settings_v1: { typography: { fontSize: 16 } } }).page().NEXORA.Storage;
+  assert.equal((await storage.get()).typography.codeTabSize, 0);
+  const initial = await storage.set({ typography: { codeTabSize: 2 } });
+  assert.equal(initial.typography.fontSize, 16);
+  await assert.rejects(storage.set({ typography: { codeTabSize: 3 } }), /Invalid setting: typography.codeTabSize/);
+  const next = await storage.set({ typography: { codeTabSize: 8 } });
+  assert.equal(next.typography.codeTabSize, 8);
+  const previous = next.appearanceHistory.at(-1);
+  const restored = await storage.restoreHistory(next.appearanceHistory.length - 1, previous.at);
+  assert.equal(restored.typography.codeTabSize, 2);
 });
 
 test("rapid toggles and favorites use the latest stored state", async () => {
@@ -160,7 +173,7 @@ test("old flat theme exports remain compatible and fill new colors", () => {
 
 test("preset link/text and primary hover contrast stays readable", () => {
   const p = harness().page();
-  assert.equal(p.NEXORA.PRESET_THEMES.length, 45);
+  assert.equal(p.NEXORA.PRESET_THEMES.length, 48);
   for (const theme of p.NEXORA.PRESET_THEMES) {
     assert.doesNotThrow(() => p.NEXORA.Validator.theme(theme), theme.id);
     const c = theme.colors;

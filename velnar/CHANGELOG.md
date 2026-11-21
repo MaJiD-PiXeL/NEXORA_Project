@@ -1,20 +1,33 @@
 # Changelog
 
-## NEXORA brand update
+## 2.5.0 — 2026-11-21
+
+Download `nexora-extension.zip` for Chrome and Edge. Firefox 128 and newer can load the unsigned `nexora-firefox.zip` temporarily through `about:debugging`.
+
+### Palettes, typography and browsers
+
+- Added Paper & Ink, Glacial Slate and Mulberry Dusk, bringing the total to 48 built-in palettes.
+- Load colors from any built-in palette into a Theme Builder draft and export saved themes directly from the library.
+- Choose a code tab width of 2, 4 or 8 spaces or keep GitHub's default.
+- Added a Firefox package using the same settings, popup, theming and background handlers as the Chromium extension.
+- Published install archives through a version-tagged GitHub release workflow.
+- Refined profile card spacing, joined contribution panels, link-style buttons and responsive activity charts.
+
+### NEXORA brand update
 
 - Adopted the canonical NEXORA silver N mark, obsidian/titanium/electric-blue palette and local Manrope/Vazirmatn typography.
 - Updated English and Persian interface copy, metadata, previews, landing page, exports and release package to NEXORA.
 - Migrated existing VELNAR settings on the next successful write; earlier backups, personal themes and card density remain compatible.
 
 
-## Unreleased — Repository layout fix (2026-11-01)
+### Repository layout
 
 - Scoped repository card styling to the profile repository list instead of matching unrelated GitHub utility rows and source-list wrappers.
 - Added inline insets and space between repository entries, retaining native vertical padding, star/list controls and pagination. Long names can wrap within their content column.
 - Kept file-list rows joined inside their Box, rounding only outer corners instead of every row.
 - Added a screenshot-shaped browser fixture covering desktop/mobile layouts, long names, component toggles, custom radius, dynamic list entries and native-layout restoration.
 
-## Unreleased — Personalization (2026-11-01)
+### Personalization
 
 - Added a local personal-theme library (50 palettes) with save, edit/rename, copy, favorite, preview, apply and delete in the existing theme library and popup.
 - Added recoverable Theme Builder drafts, explicit draft discard and seed-based light/dark palette generation.
@@ -23,12 +36,12 @@
 - Replaced panel-local one-step undo with serialized persistent history for 20 appearance changes, including typography, layout, components and CSS; library, draft, favorites and language remain independent.
 - Added live English/Persian localization and RTL interface layouts while preserving LTR source code and user theme names.
 - Included the new state in validated backups, kept older backups compatible, and raised the JSON import cap to 2 MB.
-- Aligned root documentation with 45 built-in palettes, 30 editable colors and the Alt+Shift+R random-theme shortcut.
+- Documented 30 editable colors and the Alt+Shift+R random-theme shortcut.
 - Added unit and browser regressions for personal-theme lifecycle, drafts, history, seed generation, readability repairs, localization, backup roundtrips and responsive RTL layouts.
 
-## Unreleased — Workspace studio (2026-10-31)
+### Workspace studio
 
-- Removed motion controls, automatic motion activation and decorative engines from GitHub. All 45 palettes remain available. Old motion preferences are ignored when loading or restoring settings.
+- Removed motion controls, automatic motion activation and decorative engines from GitHub. Old motion preferences are ignored when loading or restoring settings.
 - Removed URL polling and body scans; styles recover through navigation events and observers limited to the head and document root.
 - Replaced repeated character SVGs in the theme library with lightweight palette previews, and removed UI transitions.
 

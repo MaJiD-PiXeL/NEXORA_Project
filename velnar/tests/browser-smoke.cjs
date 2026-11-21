@@ -37,7 +37,7 @@ async function until(read, expected, label) {
     await options.goto(`${base}/options/options.html`);
     await options.locator(".gs-color-field").first().waitFor({ state: "attached" });
     assert.equal(await options.locator(".gs-color-field").count(), 30);
-    assert.equal(await options.locator(".gs-theme-choice").count(), 45);
+    assert.equal(await options.locator(".gs-theme-choice").count(), 48);
     console.log("PASS: real extension service worker, options and 30 builder controls");
 
     const github = await context.newPage();
@@ -120,7 +120,7 @@ async function until(read, expected, label) {
 
     const popup = await context.newPage(); await popup.setViewportSize({ width: 380, height: 620 }); await popup.goto(`${base}/popup/popup.html`);
     await popup.locator(".gs-theme-select").first().waitFor();
-    assert.equal(await popup.locator(".gs-theme-select").count(), 45);
+    assert.equal(await popup.locator(".gs-theme-select").count(), 48);
     await popup.getByRole("switch", { name: "Enable extension", exact: true }).focus();
     await popup.getByRole("switch", { name: "Enable extension", exact: true }).press("Space");
     await until(() => popup.getByRole("switch", { name: "Enable extension", exact: true }).getAttribute("aria-checked"), "false", "keyboard toggle");
@@ -131,7 +131,9 @@ async function until(read, expected, label) {
 
     const landing = await context.newPage(); await landing.goto(pathToFileURL(path.join(root, "landing/index.html")).href);
     assert.equal(await landing.locator("#worldPicker button").count(), 15);
-    assert.ok(await landing.locator('a[href="../dist/nexora-extension.zip"]').count() > 0);
+    for (const asset of ["nexora-extension.zip", "nexora-firefox.zip"]) {
+      assert.ok(await landing.locator(`a[href="https://github.com/MaJiD-PiXeL/VELNAR_Project/releases/latest/download/${asset}"]`).count() > 0);
+    }
     await landing.screenshot({ path: path.join(artifacts, "nexora-landing.png"), fullPage: true });
     assert.deepEqual(errors, [], "browser errors");
     fs.writeFileSync(path.join(artifacts, "browser-results.json"), JSON.stringify({ passed: true, browser: await context.browser().version(), fixture: "local HTML routed at github.com/nexora-test", errors }, null, 2));

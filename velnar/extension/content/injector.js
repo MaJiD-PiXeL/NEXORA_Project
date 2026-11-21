@@ -475,6 +475,9 @@ pre, code, .highlight, .blob-code, .blob-code-inner, .react-code-text, .CodeMirr
     if (typography.codeFont) {
       css += `pre, code, .blob-code, .CodeMirror { font-family: ${typography.codeFont} !important; }\n`;
     }
+    if (typography.codeTabSize) {
+      css += `pre, code, .blob-code-inner, .react-code-text, .diff-text-cell { tab-size: ${typography.codeTabSize} !important; }\n`;
+    }
     if (tag.textContent !== css) tag.textContent = css;
   },
 

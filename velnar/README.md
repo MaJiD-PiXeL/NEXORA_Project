@@ -1,28 +1,36 @@
 # NEXORA
 
-Make GitHub yours. A private, local-first Chrome and Edge extension with 45 themes, 30 editable colors, typography controls with static styling.
+Make GitHub yours. NEXORA is a private, local-first extension with 48 static themes, 30 editable colors, and typography controls.
 
 ## Install
 
-1. Extract `dist/nexora-extension.zip`.
+### Chrome and Edge
+
+1. Get `nexora-extension.zip` from the [latest GitHub release](https://github.com/MaJiD-PiXeL/VELNAR_Project/releases/latest) and extract it.
 2. Open `chrome://extensions` or `edge://extensions`.
 3. Enable **Developer mode**, choose **Load unpacked**, and select the extracted folder containing `manifest.json`.
 4. Visit GitHub and open **NEXORA** in your browser toolbar.
 
 For development, load the `extension/` directory directly. Chrome/Edge 111 or newer is required. No bundler or server is needed for the extension.
 
+### Firefox
+
+1. Get `nexora-firefox.zip` from the [latest GitHub release](https://github.com/MaJiD-PiXeL/VELNAR_Project/releases/latest).
+2. In Firefox 128 or newer, open `about:debugging#/runtime/this-firefox`.
+3. Choose **Load Temporary Add-on** and select the ZIP. The unsigned extension is loaded for the current browser session.
+
 ## Features
 
 - Fifteen cinematic palettes inspired by movie, television and game worlds, alongside static artwork in the collection preview.
-- 30 additional official, community, vivid and gaming palettes, searchable in the popup and settings.
+- 33 additional official, community, vivid and gaming palettes, searchable in the popup and settings.
 - Favorites, random themes, and automatic light/dark selection based on your system.
-- Theme Builder with 30 editable colors, recoverable autosaved drafts and light/dark palette generation from one seed color.
-- A local library of up to 50 personal themes: save, rename, edit, copy, favorite, preview, apply and delete without changing the currently applied copy.
+- Theme Builder with 30 editable colors, recoverable autosaved drafts, built-in palettes as starting points, and light/dark palette generation from one seed color.
+- A local library of up to 50 personal themes with editing, favorites, preview, direct JSON export and explicit application.
 - Readability checks for text, cards, links, buttons, status colors, code and diffs, with foreground repair suggestions. Translucent colors are marked unmeasured.
 - Repository, code, profile and pull request/code review previews, including side-by-side comparison.
 - Persistent history for the last 20 appearance changes, including typography, layout, components and CSS. Undo works across popup and settings sessions.
 - English and Persian interface languages, live synchronization and RTL support with LTR source code.
-- 18 component switches, global typography, border radius and shadow intensity.
+- 18 component switches, global typography, code tab width, border radius and shadow intensity.
 - Lightweight static themes: no animation engine, particles, character overlays or URL polling.
 - Custom CSS with size, delimiter and external-resource checks.
 - Theme import/export and complete settings backup/restore with validation.
@@ -41,7 +49,7 @@ On a pull request's **Files changed** page, select **Review focus** in the popup
 
 Choose **My themes** in the library or popup to find saved palettes. **Save to library** creates a palette; **Edit / Rename** loads it into the builder and **Update saved theme** replaces that library entry. **Save a copy** creates another entry. Applying is explicit, so editing/deleting a library entry preserves the independent theme copy already active on GitHub.
 
-Valid color/name edits are saved as a builder draft without changing the active palette. Reopening settings recovers the draft automatically. **Discard draft** removes it and returns the builder to the active colors. Drafts are shared between settings windows; the last saved edit wins.
+Valid color/name edits are saved as a builder draft without changing the active palette. **Use palette colors** loads the selected built-in palette into that draft. Reopening settings recovers the draft automatically. **Discard draft** removes it and returns the builder to the active colors. Drafts are shared between settings windows; the last saved edit wins.
 
 **Settings → Appearance history** restores a prior appearance and removes that entry and newer entries. Undo restores the latest entry. The library, favorites, draft, language and extension enabled state are preserved. A full reset clears these along with history. Complete backups include the library, draft, history and language, with a 2 MB JSON import limit. Existing backups without these fields continue to load with defaults.
 
@@ -78,7 +86,7 @@ npm run icons
 python scripts/build_zip.py
 ```
 
-Python 3 is needed only for packaging. `sharp` is used only to generate PNG icons; the installed extension has no runtime dependencies. The ZIP contains only `extension/` files, with the manifest at its root.
+Python 3 is needed only for packaging. `sharp` is used only to generate PNG icons. `npm run build` writes `dist/nexora-extension.zip` and `dist/nexora-firefox.zip`, each with a browser-specific manifest at its root.
 
 Browser smoke tests use Playwright and a separate, disposable browser profile:
 
@@ -91,6 +99,7 @@ node tests/studio-smoke.cjs
 node tests/static-themes.cjs
 npm run test:personalization
 npm run test:repositories
+node tests/profile-appearance.cjs
 ```
 
 ## Existing installations

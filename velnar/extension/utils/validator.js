@@ -124,6 +124,7 @@ NEXORA.Validator = {
         let valid;
         if (group === "componentOverrides") valid = typeof value === "boolean";
         else if (["fontFamily", "codeFont"].includes(key)) valid = typeof value === "string" && value.length <= 160 && /^[\p{L}\p{N}\s,'"_-]*$/u.test(value);
+        else if (key === "codeTabSize") valid = [0, 2, 4, 8].includes(value);
         else {
           const ranges = { borderRadius: [0, 20], shadowIntensity: [0, 100], fontSize: [11, 20], lineHeight: [1.1, 2], fontWeight: [300, 700] };
           valid = typeof value === "number" && Number.isFinite(value) && value >= ranges[key][0] && value <= ranges[key][1];

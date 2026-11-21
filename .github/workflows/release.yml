@@ -1,0 +1,41 @@
+name: Publish NEXORA release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Verify release version and extract notes
+        working-directory: velnar
+        run: |
+          version=$(node -p 'require("./extension/manifest.json").version')
+          test "$GITHUB_REF_NAME" = "v$version"
+          awk -v version="$version" '/^## / { if (copy) exit; copy = index($0, "## " version " ") == 1; next } copy' CHANGELOG.md > dist-notes.md
+          test -s dist-notes.md
+      - name: Run tests and build both packages
+        working-directory: velnar
+        run: |
+          npm test
+          npm run build
+      - name: Publish the release and ZIP files
+        working-directory: velnar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/nexora-extension.zip dist/nexora-firefox.zip \
+            --verify-tag --title "NEXORA $GITHUB_REF_NAME" --notes-file dist-notes.md

@@ -88,7 +88,8 @@ NEXORA.DEFAULT_SETTINGS = {
     fontSize: 14,
     lineHeight: 1.5,
     fontWeight: 400,
-    codeFont: ""
+    codeFont: "",
+    codeTabSize: 0
   },
   layout: {
     borderRadius: 8,

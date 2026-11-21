@@ -6,7 +6,7 @@
 
 Make GitHub truly yours.
 
-**A powerful Chrome extension for completely customizing the look and feel of GitHub.**
+**Customize the look and feel of GitHub in Chrome, Edge, and Firefox.**
 
 Themes • Colors • Typography • Custom CSS • Theme Builder
 
@@ -20,11 +20,11 @@ Themes • Colors • Typography • Custom CSS • Theme Builder
 
 # 🌐 English
 
-The project is now branded **NEXORA**, following the NEXORA website identity. The existing repository URL and `velnar/extension` path remain valid for upgrades; the release package is `velnar/dist/nexora-extension.zip`.
+Download the Chrome/Edge or Firefox package from the [latest GitHub release](https://github.com/MaJiD-PiXeL/VELNAR_Project/releases/latest). For unpacked development, the Chromium extension source is in `velnar/extension`.
 
 ## ✨ What is NEXORA?
 
-**NEXORA** is a Chrome extension that gives you complete control over the appearance of GitHub.
+**NEXORA** is a browser extension that gives you control over the appearance of GitHub.
 
 Instead of using the same default interface every day, NEXORA lets you transform GitHub with beautiful themes, custom colors, typography settings, component controls, and even your own CSS.
 
@@ -36,7 +36,7 @@ All of this happens **locally in your browser** without changing GitHub's actual
 
 ## 🔥 Features
 
-### 🎨 45 Built-in Themes
+### 🎨 48 Built-in Themes
 
 Choose from a large collection of carefully designed themes including:
 
@@ -246,6 +246,8 @@ Your settings are stored locally in your browser.
 
 NEXORA is currently available directly from GitHub.
 
+For the packaged Chrome and Edge download or temporary Firefox installation, follow the [browser-specific install guide](velnar/README.md#install). The steps below load the Chromium source from a repository checkout.
+
 ### 1. Download NEXORA
 
 Clone the repository:
@@ -419,12 +421,12 @@ NEXORA will continue to improve.
 
 Planned ideas include:
 
-* [ ] More themes
-* [ ] More customization options
-* [ ] Improved Theme Builder
-* [ ] Better preset management
+* [x] Three new themes in 2.5.0
+* [x] Configurable code tab width
+* [x] Start a Theme Builder draft from any built-in palette
+* [x] Export personal palettes directly from the library
 * [ ] Chrome Web Store release
-* [ ] Additional browser support
+* [x] Firefox support through temporary installation
 
 ---
 
@@ -479,7 +481,7 @@ See the `LICENSE` file for more information.
 
 ## NEXORA چیست؟
 
-**NEXORA** یک اکستنشن برای Google Chrome است که به شما اجازه می‌دهد ظاهر GitHub را تقریباً به‌طور کامل شخصی‌سازی کنید.
+**NEXORA** افزونه‌ای برای Chrome، Edge و Firefox است که ظاهر GitHub را شخصی‌سازی می‌کند.
 
 اگر از ظاهر همیشگی GitHub خسته شده‌اید، NEXORA به شما امکان می‌دهد با استفاده از تم‌ها، رنگ‌ها، فونت‌ها و تنظیمات مختلف محیط GitHub را مطابق سلیقه خودتان تغییر دهید.
 
@@ -491,7 +493,7 @@ See the `LICENSE` file for more information.
 
 ## 🔥 امکانات NEXORA
 
-### 🎨 ۴۵ تم آماده
+### 🎨 ۴۸ تم آماده
 
 NEXORA دارای مجموعه بزرگی از تم‌های مختلف است؛ از تم‌های ساده و حرفه‌ای گرفته تا تم‌های Gaming و RGB.
 
@@ -767,11 +769,12 @@ VELNAR_Project/velnar/extension
 
 در نسخه‌های بعدی قابلیت‌های بیشتری برای NEXORA در نظر گرفته می‌شود.
 
-* [ ] تم‌های بیشتر
-* [ ] امکانات شخصی‌سازی بیشتر
-* [ ] توسعه Theme Builder
+* [x] سه تم تازه در نسخهٔ ۲٫۵٫۰
+* [x] تنظیم عرض تورفتگی تب در کد
+* [x] شروع پیش‌نویس Theme Builder از هر پالت آماده
+* [x] خروجی مستقیم پالت‌های شخصی از کتابخانه
 * [ ] انتشار در Chrome Web Store
-* [ ] پشتیبانی از مرورگرهای بیشتر
+* [x] پشتیبانی از نصب موقت در Firefox
 
 ---
 

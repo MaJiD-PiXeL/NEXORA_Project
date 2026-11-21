@@ -1018,6 +1018,10 @@ dialog::backdrop {
   color:#a3aab8;
   max-width:620px;
 }
+.vn-reading-preview pre {
+  margin:0;
+  white-space:pre-wrap;
+}
 .vn-reading-preview code {
   display:block;
   padding:16px;

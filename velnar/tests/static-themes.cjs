@@ -37,7 +37,7 @@ const rgb = hex => `rgb(${hex.slice(1).match(/../g).map(n => parseInt(n, 16)).jo
     await profile.locator('#nexora-theme-vars').waitFor({ state: 'attached' });
     assert.equal(await profile.locator(retired).count(), 0);
     const themes = await options.evaluate(() => NEXORA.PRESET_THEMES);
-    assert.equal(themes.length, 45);
+    assert.equal(themes.length, 48);
     for (const theme of themes) {
       await options.evaluate(id => NEXORA.Storage.selectTheme(id), theme.id);
       await profile.waitForFunction(expected => getComputedStyle(document.body).backgroundColor === expected, rgb(theme.colors.background));
@@ -104,6 +104,6 @@ const rgb = hex => `rgb(${hex.slice(1).match(/../g).map(n => parseInt(n, 16)).jo
     fs.writeFileSync(path.join(artifacts, 'results.json'), JSON.stringify({ passed: true, themes: themes.length,
       animations: 0, unchangedStyleWrites: 0, scripts: scripts.length,
       scriptBytes: scripts.reduce((sum, file) => sum + fs.statSync(path.join(root, 'extension', file)).size, 0), errors }, null, 2));
-    console.log('PASS: 45 static palettes, old settings migration, no motion, stylesheet/head recovery, zero idle writes, system appearance, library reuse, preview and landing');
+    console.log('PASS: 48 static palettes, old settings migration, no motion, stylesheet/head recovery, zero idle writes, system appearance, library reuse, preview and landing');
   } finally { await context.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

@@ -106,7 +106,10 @@
       const remove = document.createElement("button"); remove.textContent = "Delete"; remove.type = "button";
       remove.setAttribute("aria-label", `Delete ${theme.name}`);
       UI.on(remove, "click", async () => { settings = await NEXORA.Storage.deletePersonal(theme.id); if (editingPersonalId === theme.id) editingPersonalId = null; refresh(); UI.status("Personal theme deleted. The active appearance is unchanged."); });
-      actions.append(edit, remove); card.append(actions);
+      const exportTheme = document.createElement("button"); exportTheme.textContent = "Export JSON"; exportTheme.type = "button";
+      exportTheme.setAttribute("aria-label", `Export ${theme.name} as JSON`);
+      UI.on(exportTheme, "click", () => downloadJson({ name: theme.name, colors: theme.colors }, "nexora-theme.json"));
+      actions.append(edit, exportTheme, remove); card.append(actions);
     }
     if (theme.rgbCycle) {
       const badge = document.createElement("span"); badge.className = "gs-rgb-badge"; badge.textContent = "RGB"; card.append(badge);
@@ -202,6 +205,18 @@
   }
   UI.on($("themeNameInput"), "input", persistDraft);
   UI.on($("btnLoadPresetIntoBuilder"), "click", loadActiveIntoBuilder);
+  for (const theme of NEXORA.Catalog.filter(NEXORA.PRESET_THEMES, { sort: "name" })) {
+    $("builderPreset").add(new Option(theme.name, theme.id));
+  }
+  UI.on($("builderPreset"), "change", () => $("btnUseBuilderPreset").disabled = !$("builderPreset").value);
+  UI.on($("btnUseBuilderPreset"), "click", async () => {
+    const preset = NEXORA.getThemeById($("builderPreset").value);
+    if (!preset) return;
+    builderColors = { ...preset.colors };
+    if (!$("themeNameInput").value.trim()) $("themeNameInput").value = preset.name;
+    renderBuilder();
+    await persistDraft();
+  });
   UI.on($("btnGeneratePalette"), "click", async () => { builderColors = NEXORA.Palette.generate($("paletteSeed").value, $("paletteMode").value); renderBuilder(); await persistDraft(); });
   UI.on($("btnDiscardDraft"), "click", async () => {
     settings = await NEXORA.Storage.set({ builderDraft: null }); editingPersonalId = null;
@@ -224,7 +239,8 @@
     UI.on($(id), "input", () => $(id + "Value").textContent = $(id).value + (id === "borderRadius" ? "px" : "%"));
     UI.on($(id), "change", async () => { settings = await NEXORA.Storage.set({ layout: { [id]: Number($(id).value) } }); UI.status("Layout saved."); });
   }
-  for (const id of ["fontFamily", "codeFont", "fontSize", "lineHeight", "fontWeight"]) {
+  const typographyFields = ["fontFamily", "codeFont", "fontSize", "codeTabSize", "lineHeight", "fontWeight"];
+  for (const id of typographyFields) {
     UI.on($(id), "change", async () => {
       const value = ["fontFamily", "codeFont"].includes(id) ? $(id).value.trim() : Number($(id).value);
       settings = await NEXORA.Storage.set({ typography: { [id]: value } }); UI.status("Typography saved.");
@@ -321,10 +337,12 @@
       preview.style.fontSize = $("fontSize").value + "px";
       preview.style.lineHeight = $("lineHeight").value;
       preview.style.fontWeight = $("fontWeight").value;
-      preview.querySelector("code").style.fontFamily = $("codeFont").value || "monospace";
+      const code = preview.querySelector("code");
+      code.style.fontFamily = $("codeFont").value || "monospace";
+      code.style.tabSize = Number($("codeTabSize").value) || "";
     }
   }
-  for (const id of ["fontFamily", "codeFont", "fontSize", "lineHeight", "fontWeight"]) UI.on($(id), "input", updateTypographyPreview);
+  for (const id of typographyFields) UI.on($(id), "input", updateTypographyPreview);
   for (const [id, value] of [["btnReadingComfort", { fontSize: 16, lineHeight: 1.7, fontWeight: 400 }], ["btnResetTypography", NEXORA.DEFAULT_SETTINGS.typography]]) UI.on($(id), "click", async () => {
     settings = await NEXORA.Storage.set({ typography: value });
     // A focused range must also reflect a preset applied from another control.

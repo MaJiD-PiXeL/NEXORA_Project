@@ -250,6 +250,19 @@ NEXORA.PRESET_THEMES = [
     accent: "#ff6f91", accent2: "#ffc75f", success: "#57cc99", warning: "#ffb703", error: "#e63946"
   }),
 
+  buildTheme("paper-and-ink", "Paper & Ink", "vivid", {
+    bg: "#fcf8ee", bgAlt: "#f1e9d8", text: "#241e17", textMuted: "#615346",
+    accent: "#795120", accent2: "#526b3f", success: "#386338", warning: "#875810", error: "#a1273b"
+  }),
+  buildTheme("glacial-slate", "Glacial Slate", "vivid", {
+    bg: "#121820", bgAlt: "#1b2631", text: "#e9f2fa", textMuted: "#acbdcd",
+    accent: "#87c9ed", accent2: "#b4a7e5", success: "#8bd3b0", warning: "#f0ca83", error: "#f3a1ac", navbar: "#0b1118"
+  }),
+  buildTheme("mulberry-dusk", "Mulberry Dusk", "vivid", {
+    bg: "#211522", bgAlt: "#322035", text: "#faedf3", textMuted: "#d1b5c7",
+    accent: "#ec9fbd", accent2: "#f3c490", success: "#9fcea9", warning: "#f3c490", error: "#ff9ca3", navbar: "#170f1a"
+  }),
+
   // -------- Gaming: theme haye "motaharek" - rang e accent dayeman miche beyne tayfe
   // (hue-rotate cycling), mesle keyboard/mouse haye RGB. faghat vaghti "Animated Theme"
   // roshan bashe in cycling ejra mishe, vagarna hamun rang e sabet e accent/accent2 mimune

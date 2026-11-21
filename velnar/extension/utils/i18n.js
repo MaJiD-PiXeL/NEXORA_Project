@@ -87,7 +87,10 @@ NEXORA.I18n = {
     "Apply globally": "اعمال سراسری", "Only for this repo": "فقط برای این ریپو", "Use global theme": "استفاده از تم سراسری", "Review focus": "تمرکز در بازبینی",
     "Theme saved for this repository.": "تم برای این ریپو ذخیره شد.", "Global theme restored for this repository.": "تم سراسری برای این ریپو بازیابی شد.", "Global theme saved. This repo uses its own theme.": "تم سراسری ذخیره شد. این ریپو از تم خودش استفاده می‌کند.",
     "Save up to 100 repository themes.": "حداکثر برای ۱۰۰ ریپو می‌توانید تم ذخیره کنید.", "Invalid repository name.": "نام ریپو نامعتبر است.", "Invalid or duplicate repository name.": "نام ریپو نامعتبر یا تکراری است.",
-    "Download PNG card": "دانلود کارت PNG", "Could not create the PNG card.": "ساخت کارت PNG ممکن نشد."
+    "Download PNG card": "دانلود کارت PNG", "Could not create the PNG card.": "ساخت کارت PNG ممکن نشد.",
+    "Built-in palette": "پالت آماده", "Choose a palette": "انتخاب پالت", "Use palette colors": "استفاده از رنگ‌های پالت",
+    "Export JSON": "خروجی JSON", "Code tab width": "عرض تورفتگی تب در کد", "GitHub default": "پیش‌فرض گیت‌هاب",
+    "2 spaces": "۲ فاصله", "4 spaces": "۴ فاصله", "8 spaces": "۸ فاصله"
   },
   t(value) {
     if (this.language !== "fa" || typeof value !== "string") return value;
@@ -106,7 +109,8 @@ NEXORA.I18n = {
         [/^Text contrast ([\d.]+:1) · (.+)$/, m => `کنتراست متن ${m[1]} · ${m[2].startsWith("Meets") ? "مطابق AA برای متن معمولی" : "کمتر از AA؛ تفاوت رنگ متن و سطح را بیشتر کنید"}`],
         [/^Text contrast: use opaque colors to measure readability\.$/, () => "برای اندازه‌گیری خوانایی از رنگ‌های غیرشفاف استفاده کنید."],
         [/^(Active on GitHub|Extension paused) · (Following system|Manual appearance) · Static themes$/, m => `${this.t(m[1])} · ${this.t(m[2])} · تم‌های ثابت`],
-        [/^NEXORA makes GitHub feel like your space\.(.+)Version ([\d.]+)\.$/, m => `NEXORA گیت‌هاب را مطابق سلیقه شما نمایش می‌دهد. تنظیمات در مرورگر می‌مانند؛ بدون حساب، آمارگیری یا ردیابی. نسخه ${m[2]}.`]
+        [/^NEXORA makes GitHub feel like your space\.(.+)Version ([\d.]+)\.$/, m => `NEXORA گیت‌هاب را مطابق سلیقه شما نمایش می‌دهد. تنظیمات در مرورگر می‌مانند؛ بدون حساب، آمارگیری یا ردیابی. نسخه ${m[2]}.`],
+        [/^Export (.+) as JSON$/, m => `خروجی JSON از ${m[1]}`]
       ];
       for (const [pattern, render] of patterns) { const match = text.match(pattern); if (match) { translated = render(match); break; } }
     }

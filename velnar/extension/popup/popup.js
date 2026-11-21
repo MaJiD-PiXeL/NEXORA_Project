@@ -159,9 +159,10 @@
   });
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
   render();
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  const tabs = globalThis.browser?.tabs || chrome.tabs;
+  const [tab] = await tabs.query({ active: true, currentWindow: true });
   if (!tab?.url?.startsWith("https://github.com/")) return;
-  const port = chrome.tabs.connect(tab.id, { name: "nexora:workspace", frameId: 0 });
+  const port = tabs.connect(tab.id, { name: "nexora:workspace", frameId: 0 });
   connection = port;
   port.onMessage.addListener(next => {
     if ((workspace && next.path !== workspace.path) || (workspace?.previewId && !next.previewId)) cancelPreview(false);

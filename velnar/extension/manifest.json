@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "NEXORA - Customize Your GitHub",
   "short_name": "NEXORA",
-  "version": "2.4.5",
-  "description": "Make GitHub yours with 45 static themes, custom palettes and typography. Lightweight and private by design.",
+  "version": "2.5.0",
+  "description": "Make GitHub yours with 48 static themes, custom palettes and typography. Lightweight and private by design.",
   "author": "NEXORA",
   "icons": {
     "16": "icons/icon16.png",
