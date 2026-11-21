@@ -6,4 +6,4 @@ NEXORA does not transmit data to its developer or any third party. It has no acc
 
 To remove stored preferences, use **Settings → Reset All Settings** in the extension or remove the extension through your browser. You can remove exported files separately.
 
-For privacy questions, contact the project through [GitHub](https://github.com/MaJiD-PiXeL/VELNAR_Project/issues).
+For privacy questions, contact the project through [GitHub](https://github.com/MaJiD-PiXeL/NEXORA_Project/issues).

@@ -132,7 +132,7 @@ async function until(read, expected, label) {
     const landing = await context.newPage(); await landing.goto(pathToFileURL(path.join(root, "landing/index.html")).href);
     assert.equal(await landing.locator("#worldPicker button").count(), 15);
     for (const asset of ["nexora-extension.zip", "nexora-firefox.zip"]) {
-      assert.ok(await landing.locator(`a[href="https://github.com/MaJiD-PiXeL/VELNAR_Project/releases/latest/download/${asset}"]`).count() > 0);
+      assert.ok(await landing.locator(`a[href="https://github.com/MaJiD-PiXeL/NEXORA_Project/releases/latest/download/${asset}"]`).count() > 0);
     }
     await landing.screenshot({ path: path.join(artifacts, "nexora-landing.png"), fullPage: true });
     assert.deepEqual(errors, [], "browser errors");

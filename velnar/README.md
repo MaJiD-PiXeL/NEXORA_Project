@@ -6,7 +6,7 @@ Make GitHub yours. NEXORA is a private, local-first extension with 48 static the
 
 ### Chrome and Edge
 
-1. Get `nexora-extension.zip` from the [latest GitHub release](https://github.com/MaJiD-PiXeL/VELNAR_Project/releases/latest) and extract it.
+1. Get `nexora-extension.zip` from the [latest GitHub release](https://github.com/MaJiD-PiXeL/NEXORA_Project/releases/latest) and extract it.
 2. Open `chrome://extensions` or `edge://extensions`.
 3. Enable **Developer mode**, choose **Load unpacked**, and select the extracted folder containing `manifest.json`.
 4. Visit GitHub and open **NEXORA** in your browser toolbar.
@@ -15,7 +15,7 @@ For development, load the `extension/` directory directly. Chrome/Edge 111 or ne
 
 ### Firefox
 
-1. Get `nexora-firefox.zip` from the [latest GitHub release](https://github.com/MaJiD-PiXeL/VELNAR_Project/releases/latest).
+1. Get `nexora-firefox.zip` from the [latest GitHub release](https://github.com/MaJiD-PiXeL/NEXORA_Project/releases/latest).
 2. In Firefox 128 or newer, open `about:debugging#/runtime/this-firefox`.
 3. Choose **Load Temporary Add-on** and select the ZIP. The unsigned extension is loaded for the current browser session.
 

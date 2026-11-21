@@ -20,7 +20,7 @@ Themes • Colors • Typography • Custom CSS • Theme Builder
 
 # 🌐 English
 
-Download the Chrome/Edge or Firefox package from the [latest GitHub release](https://github.com/MaJiD-PiXeL/VELNAR_Project/releases/latest). For unpacked development, the Chromium extension source is in `velnar/extension`.
+Download the Chrome/Edge or Firefox package from the [latest GitHub release](https://github.com/MaJiD-PiXeL/NEXORA_Project/releases/latest). For unpacked development, the Chromium extension source is in `velnar/extension`.
 
 ## ✨ What is NEXORA?
 
@@ -253,7 +253,7 @@ For the packaged Chrome and Edge download or temporary Firefox installation, fol
 Clone the repository:
 
 ```bash
-git clone https://github.com/MaJiD-PiXeL/VELNAR_Project.git
+git clone https://github.com/MaJiD-PiXeL/NEXORA_Project.git
 ```
 
 Or click:
@@ -271,7 +271,7 @@ If you downloaded the ZIP file, extract it.
 Navigate to:
 
 ```text
-VELNAR_Project/
+NEXORA_Project/
 └── velnar/
     └── extension/
 ```
@@ -311,7 +311,7 @@ Load unpacked
 and select:
 
 ```text
-VELNAR_Project/velnar/extension
+NEXORA_Project/velnar/extension
 ```
 
 ---
@@ -362,7 +362,7 @@ Changes are applied immediately.
 # 📂 Project Structure
 
 ```text
-VELNAR_Project/
+NEXORA_Project/
 │
 └── velnar/
     │
@@ -693,7 +693,7 @@ NEXORA دارای:
 Repository را دانلود کنید یا Clone بگیرید:
 
 ```bash
-git clone https://github.com/MaJiD-PiXeL/VELNAR_Project.git
+git clone https://github.com/MaJiD-PiXeL/NEXORA_Project.git
 ```
 
 همچنین می‌توانید از:
@@ -741,7 +741,7 @@ Load unpacked
 سپس پوشه زیر را انتخاب کنید:
 
 ```text
-VELNAR_Project/velnar/extension
+NEXORA_Project/velnar/extension
 ```
 
 ---
